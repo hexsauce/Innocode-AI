@@ -212,6 +212,7 @@
             color: var(--light-gold);
             margin: 0;
             line-height: 1.3;
+            font-style: italic;
         }
         
         /* Two Column Section */
@@ -615,7 +616,7 @@
             <div class="features-grid">
                 <div class="feature-card">
                     <span class="feature-icon">🧠</span>
-                    <h3 data-ms="Turn AI into Your Second Brain" data-en="Turn AI into Your Second Brain">Turn AI into Your Second Brain</h3>
+                    <h3 data-ms="Jadikan AI sebagai Otak Kedua Anda" data-en="Turn AI into Your Second Brain">Jadikan AI sebagai Otak Kedua Anda</h3>
                 </div>
                 <div class="feature-card">
                     <span class="feature-icon">💰</span>
@@ -679,9 +680,15 @@
                         </svg>
                         +60 14-651 1382
                     </a>
+                    <a href="mailto:pusatinnocode@gmail.com" class="contact-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        pusatinnocode@gmail.com
+                    </a>
                 </div>
                 <p class="copyright">
-                    &copy; 2026 Pusat Kemahiran INNOCODE. <span data-ms="Hak Cipta Terpelihara." data-en="All Rights Reserved.">Hak Cipta Terpelihara.</span>
+                    &copy; 2026 Pusat Kemahiran Innocode. All Rights Reserved.</span>
                 </p>
             </div>
         </footer>
@@ -741,12 +748,11 @@
             
             // Send email using EmailJS
             emailjs.send(
-                'YOUR_SERVICE_ID',  // Replace with your EmailJS service ID
-                'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+                'service_fjzjozh',  // Replace with your EmailJS service ID
+                'template_1g2md0f', // Replace with your EmailJS template ID
                 {
                     to_name: formData.name,
                     to_email: formData.email,
-                    from_name: 'The Timeless Leader Mastermind',
                     user_name: formData.name,
                     user_email: formData.email,
                     user_phone: formData.phone,
