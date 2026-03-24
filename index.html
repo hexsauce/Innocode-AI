@@ -1,571 +1,1587 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pusat Kemahiran Innocode</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --ink: #0d1117;
-    --paper: #f5f0e8;
-    --cream: #faf7f2;
-    --gold: #c8922a;
-    --gold-light: #e8b84b;
-    --green: #2a6b4a;
-    --green-light: #3d8f63;
-    --steel: #2d3a4a;
-    --muted: #8a8070;
-    --border: #ddd8cc;
-  }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pusat Kemahiran Innocode</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --ink: #0d1117;
+      --paper: #f5f0e8;
+      --cream: #faf7f2;
+      --gold: #c8922a;
+      --gold-light: #e8b84b;
+      --green: #2a6b4a;
+      --green-light: #3d8f63;
+      --steel: #2d3a4a;
+      --muted: #8a8070;
+      --border: #ddd8cc;
+    }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--cream);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
 
-  /* ─── NAV ─── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 48px; height: 72px;
-    background: rgba(245,240,232,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 48px;
+      height: 72px;
+      background: rgba(245, 240, 232, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-  .nav-logo { display: flex; align-items: center; gap: 14px; cursor: pointer; }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      cursor: pointer;
+    }
 
-  .logo-img {
-    width: 44px; height: 44px; border-radius: 8px; object-fit: contain;
-    background: var(--ink); display: flex; align-items: center; justify-content: center;
-    color: var(--gold); font-family: 'Syne', sans-serif; font-weight: 800;
-    font-size: 18px; letter-spacing: -1px; flex-shrink: 0;
-  }
+    .logo-img {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: contain;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 18px;
+      letter-spacing: -1px;
+      flex-shrink: 0;
+    }
 
-  .nav-wordmark { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 15px; letter-spacing: 0.04em; line-height: 1.2; color: var(--ink); }
-  .nav-wordmark span { display: block; font-weight: 400; font-size: 11px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; }
+    .nav-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      line-height: 1.2;
+      color: var(--ink);
+    }
 
-  .nav-right { display: flex; align-items: center; gap: 4px; }
+    .nav-wordmark span {
+      display: block;
+      font-weight: 400;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
 
-  .nav-links { display: flex; gap: 4px; list-style: none; }
-  .nav-links a {
-    text-decoration: none; font-family: 'Syne', sans-serif; font-size: 13px;
-    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-    color: var(--muted); padding: 8px 16px; border-radius: 6px;
-    transition: color 0.2s, background 0.2s; cursor: pointer;
-  }
-  .nav-links a:hover, .nav-links a.active { color: var(--ink); background: rgba(0,0,0,0.06); }
-  .nav-cta { background: var(--ink) !important; color: var(--gold-light) !important; padding: 8px 20px !important; border-radius: 6px !important; }
-  .nav-cta:hover { background: var(--steel) !important; }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
 
-  /* ─── LANG TOGGLE ─── */
-  .lang-toggle {
-    display: flex; border: 1.5px solid var(--border);
-    border-radius: 8px; overflow: hidden; margin-left: 12px; flex-shrink: 0;
-  }
-  .lang-btn {
-    background: transparent; border: none;
-    font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
-    letter-spacing: 0.08em; color: var(--muted); padding: 7px 13px;
-    cursor: pointer; transition: background 0.18s, color 0.18s;
-  }
-  .lang-btn.active { background: var(--ink); color: var(--gold-light); }
-  .lang-btn:not(.active):hover { background: rgba(0,0,0,0.05); color: var(--ink); }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
 
-  /* ─── PAGES ─── */
-  .page { display: none; padding-top: 72px; }
-  .page.active { display: block; }
+    .nav-links a {
+      text-decoration: none;
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+      cursor: pointer;
+    }
 
-  /* ─── HERO ─── */
-  .hero { min-height: calc(100vh - 72px); display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
-  .hero-left { padding: 80px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--ink);
+      background: rgba(0, 0, 0, 0.06);
+    }
 
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--gold); color: white; font-family: 'Syne', sans-serif;
-    font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 6px 14px; border-radius: 4px; margin-bottom: 32px; width: fit-content;
-  }
-  .hero-badge::before { content: '★'; font-size: 10px; }
+    .nav-cta {
+      background: var(--ink) !important;
+      color: var(--gold-light) !important;
+      padding: 8px 20px !important;
+      border-radius: 6px !important;
+    }
 
-  h1.hero-title { font-family: 'Syne', sans-serif; font-size: clamp(42px, 5vw, 68px); font-weight: 800; line-height: 1.0; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
-  h1.hero-title em { font-style: normal; color: var(--gold); }
+    .nav-cta:hover {
+      background: var(--steel) !important;
+    }
 
-  .hero-sub { font-size: 17px; line-height: 1.7; color: var(--muted); max-width: 420px; margin-bottom: 48px; font-weight: 300; }
-  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    /* ─── LANG TOGGLE ─── */
+    .lang-toggle {
+      display: flex;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-left: 12px;
+      flex-shrink: 0;
+    }
 
-  .btn-primary {
-    background: var(--ink); color: var(--gold-light); font-family: 'Syne', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 14px 32px; border: none; border-radius: 6px; cursor: pointer;
-    transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block;
-  }
-  .btn-primary:hover { background: var(--steel); transform: translateY(-1px); }
+    .lang-btn {
+      background: transparent;
+      border: none;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 7px 13px;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
 
-  .btn-outline {
-    background: transparent; color: var(--ink); font-family: 'Syne', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
-    padding: 14px 32px; border: 1.5px solid var(--ink); border-radius: 6px;
-    cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block;
-  }
-  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+    .lang-btn.active {
+      background: var(--ink);
+      color: var(--gold-light);
+    }
 
-  .hero-right { background: var(--ink); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
-  .hero-pattern {
-    position: absolute; inset: 0; opacity: 0.07;
-    background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200,146,42,1) 39px, rgba(200,146,42,1) 40px),
-                      repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200,146,42,1) 39px, rgba(200,146,42,1) 40px);
-  }
-  .hero-card { position: relative; z-index: 1; text-align: center; padding: 48px; }
-  .hero-card-logo {
-    width: 120px; height: 120px; border-radius: 20px; background: var(--gold);
-    margin: 0 auto 28px; display: flex; align-items: center; justify-content: center;
-    font-family: 'Syne', sans-serif; font-weight: 800; font-size: 40px;
-    color: white; letter-spacing: -2px;
-  }
-  .hero-card h2 { font-family: 'Syne', sans-serif; font-size: 22px; font-weight: 800; color: white; margin-bottom: 8px; }
-  .hero-card > p { font-size: 14px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; text-transform: uppercase; }
-  .hero-stats { display: flex; gap: 32px; margin-top: 48px; justify-content: center; }
-  .stat { text-align: center; }
-  .stat-num { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: var(--gold-light); line-height: 1; }
-  .stat-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 4px; }
+    .lang-btn:not(.active):hover {
+      background: rgba(0, 0, 0, 0.05);
+      color: var(--ink);
+    }
 
-  /* ─── SECTION ─── */
-  .section { padding: 100px 64px; max-width: 1200px; margin: 0 auto; }
-  .section-label { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-  .section-title { font-family: 'Syne', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 800; line-height: 1.05; letter-spacing: -0.02em; color: var(--ink); margin-bottom: 24px; }
-  .section-body { font-size: 16px; line-height: 1.8; color: var(--muted); max-width: 640px; font-weight: 300; }
-  hr.divider { border: none; border-top: 1px solid var(--border); margin: 0 64px; }
+    /* ─── PAGES ─── */
+    .page {
+      display: none;
+      padding-top: 72px;
+    }
 
-  /* ─── KPM ─── */
-  .kpm-banner { background: var(--ink); color: white; padding: 32px 64px; display: flex; align-items: center; gap: 24px; }
-  .kpm-icon { width: 56px; height: 56px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
-  .kpm-text h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--gold-light); margin-bottom: 4px; }
-  .kpm-text p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+    .page.active {
+      display: block;
+    }
 
-  /* ─── TEAM ─── */
-  .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2px; margin-top: 64px; border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
-  .team-card { background: white; padding: 48px 40px; transition: background 0.2s; }
-  .team-card:hover { background: var(--paper); }
-  .team-role { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .team-name { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: var(--ink); margin-bottom: 6px; line-height: 1.1; }
-  .team-title { font-size: 13px; color: var(--muted); margin-bottom: 24px; font-style: italic; }
-  .team-bio { font-size: 15px; line-height: 1.75; color: #555; font-weight: 300; }
-  .team-tag { display: inline-block; margin-top: 20px; background: var(--paper); border: 1px solid var(--border); color: var(--muted); font-size: 11px; font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border-radius: 4px; }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 72px);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
 
-  /* ─── INFO STRIP ─── */
-  .info-strip { background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px 64px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .info-item h4 { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
-  .info-item p { font-size: 15px; color: var(--ink); line-height: 1.5; }
-  .info-item a { color: var(--gold); text-decoration: none; }
-  .info-item a:hover { text-decoration: underline; }
+    .hero-left {
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
 
-  /* ─── FEATURES ─── */
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 48px; }
-  .feature-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 36px 32px; transition: border-color 0.2s, transform 0.2s; }
-  .feature-card:hover { border-color: var(--gold); transform: translateY(-2px); }
-  .feature-icon { width: 48px; height: 48px; border-radius: 10px; background: var(--ink); display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 20px; }
-  .feature-card h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--ink); margin-bottom: 10px; }
-  .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--gold);
+      color: white;
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 32px;
+      width: fit-content;
+    }
 
-  /* ─── CODING PAGE ─── */
-  .coding-hero { background: var(--ink); padding: 100px 64px 80px; position: relative; overflow: hidden; }
-  .coding-hero::before { content: '</>'; position: absolute; right: 64px; top: 50%; transform: translateY(-50%); font-family: 'Syne', sans-serif; font-size: 180px; font-weight: 800; color: rgba(200,146,42,0.08); pointer-events: none; letter-spacing: -8px; }
-  .coding-hero .section-label { color: var(--gold-light); }
-  .coding-hero .section-title { color: white; }
-  .coding-hero .section-body { color: rgba(255,255,255,0.5); }
-  .coding-notice { background: rgba(200,146,42,0.12); border: 1px solid rgba(200,146,42,0.3); border-radius: 12px; padding: 28px 32px; margin-top: 48px; max-width: 640px; }
-  .coding-notice h4 { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; color: var(--gold-light); margin-bottom: 8px; }
-  .coding-notice p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
-  .connect-box { background: var(--ink); border-radius: 16px; padding: 64px; text-align: center; margin-top: 64px; }
-  .connect-box h3 { font-family: 'Syne', sans-serif; font-size: 32px; font-weight: 800; color: white; margin-bottom: 16px; }
-  .connect-box p { font-size: 16px; color: rgba(255,255,255,0.5); margin-bottom: 32px; font-weight: 300; }
+    .hero-badge::before {
+      content: '★';
+      font-size: 10px;
+    }
 
-  /* ─── AI PAGE ─── */
-  .ai-hero { background: linear-gradient(135deg, #0d2a1a 0%, #0d1117 60%, #1a2a0d 100%); padding: 100px 64px 80px; position: relative; overflow: hidden; }
-  .ai-hero::after { content: 'AI'; position: absolute; right: -20px; bottom: -40px; font-family: 'Syne', sans-serif; font-size: 260px; font-weight: 800; color: rgba(42,107,74,0.12); pointer-events: none; letter-spacing: -8px; line-height: 1; }
-  .ai-hero .section-label { color: #7dcea0; }
-  .ai-hero .section-title { color: white; }
-  .ai-hero .section-body { color: rgba(255,255,255,0.5); }
-  .program-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-  .program-card { border-radius: 16px; overflow: hidden; border: 1px solid var(--border); background: white; transition: transform 0.2s, box-shadow 0.2s; }
-  .program-card:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
-  .program-header { padding: 40px 36px 28px; background: var(--ink); }
-  .program-header.green { background: var(--green); }
-  .program-tag { font-family: 'Syne', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
-  .program-name { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 800; color: white; margin-bottom: 4px; }
-  .program-sub { font-size: 13px; color: rgba(255,255,255,0.5); font-style: italic; }
-  .program-body { padding: 32px 36px; }
-  .program-body ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .program-body ul li { font-size: 14px; color: var(--ink); padding-left: 24px; position: relative; line-height: 1.5; }
-  .program-body ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-weight: 600; }
-  .program-actions { padding: 0 36px 36px; display: flex; flex-direction: column; gap: 10px; }
-  .btn-program { width: 100%; padding: 12px; border-radius: 8px; font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; border: none; transition: all 0.2s; }
-  .btn-program.solid { background: var(--ink); color: var(--gold-light); }
-  .btn-program.solid:hover { background: var(--steel); }
-  .btn-program.ghost { background: transparent; color: var(--muted); border: 1.5px solid var(--border); }
-  .btn-program.ghost:hover { border-color: var(--ink); color: var(--ink); }
-  .gallery-section { background: var(--paper); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 80px 64px; }
-  .gallery-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
-  .gallery-level { border-radius: 12px; border: 1px solid var(--border); background: white; padding: 32px; display: flex; align-items: center; gap: 20px; transition: border-color 0.2s; cursor: pointer; }
-  .gallery-level:hover { border-color: var(--gold); }
-  .level-badge { width: 56px; height: 56px; border-radius: 10px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 28px; }
-  .level-badge.junior { background: #fef9ec; }
-  .level-badge.senior { background: #edf5f0; }
-  .level-info h4 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--ink); margin-bottom: 4px; }
-  .level-info p { font-size: 13px; color: var(--muted); }
-  .sponsor-section { padding: 80px 64px; text-align: center; max-width: 1200px; margin: 0 auto; }
-  .sponsor-section p { font-size: 16px; color: var(--muted); max-width: 520px; margin: 16px auto 40px; line-height: 1.7; font-weight: 300; }
+    h1.hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(42px, 5vw, 68px);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
 
-  /* ─── FOOTER ─── */
-  footer { background: var(--ink); padding: 64px; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; }
-  .footer-brand h3 { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; color: white; margin-bottom: 8px; }
-  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.35); line-height: 1.7; max-width: 300px; }
-  .footer-cert { display: inline-block; margin-top: 20px; background: rgba(200,146,42,0.15); border: 1px solid rgba(200,146,42,0.3); color: var(--gold-light); font-size: 11px; font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 12px; border-radius: 4px; }
-  .footer-col h4 { font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 10px; }
-  .footer-col ul li a { font-size: 14px; color: rgba(255,255,255,0.6); text-decoration: none; transition: color 0.2s; cursor: pointer; }
-  .footer-col ul li a:hover { color: var(--gold-light); }
-  .footer-bottom { background: var(--ink); border-top: 1px solid rgba(255,255,255,0.08); padding: 20px 64px; display: flex; justify-content: space-between; align-items: center; }
-  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.25); }
+    h1.hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
 
-  /* ─── ANIMATIONS ─── */
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .page.active .animate { animation: fadeUp 0.6s ease forwards; }
-  .animate { opacity: 0; }
-  .delay-1 { animation-delay: 0.1s; }
-  .delay-2 { animation-delay: 0.2s; }
-  .delay-3 { animation-delay: 0.3s; }
+    .hero-sub {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 48px;
+      font-weight: 300;
+    }
 
-  /* ─── RESPONSIVE ─── */
-  @media (max-width: 900px) {
-    nav { padding: 0 20px; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { display: none; }
-    .hero-left { padding: 60px 24px; }
-    .section { padding: 60px 24px; }
-    .coding-hero, .ai-hero { padding: 60px 24px; }
-    hr.divider { margin: 0 24px; }
-    .info-strip { grid-template-columns: 1fr; padding: 40px 24px; }
-    .program-grid { grid-template-columns: 1fr; }
-    .gallery-levels { grid-template-columns: 1fr; }
-    footer { grid-template-columns: 1fr; padding: 40px 24px; }
-    .footer-bottom { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
-    .kpm-banner { padding: 24px; }
-    .connect-box { padding: 40px 24px; }
-    .sponsor-section, .gallery-section { padding: 60px 24px; }
-    .nav-links { display: none; }
-    .lang-toggle { margin-left: 0; }
-.hero {
-  min-height: unset;
-}
-.hero-left {
-  padding: 40px 24px 60px;
-  justify-content: flex-start;
-}
-h1.hero-title {
-  font-size: clamp(30px, 8vw, 42px);
-}
-  }
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-/* ─── MOBILE NAV DRAWER ─── */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  margin-left: 8px;
-}
-.hamburger span {
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: var(--ink);
-  border-radius: 2px;
-  transition: all 0.25s;
-}
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .btn-primary {
+      background: var(--ink);
+      color: var(--gold-light);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-.mobile-drawer {
-  display: none;
-  position: fixed;
-  top: 72px; left: 0; right: 0; bottom: 0;
-  z-index: 99;
-  background: rgba(13,17,23,0.5);
-  backdrop-filter: blur(4px);
-}
-.mobile-drawer.open { display: block; }
+    .btn-primary:hover {
+      background: var(--steel);
+      transform: translateY(-1px);
+    }
 
-.mobile-drawer-panel {
-  background: var(--cream);
-  border-bottom: 1px solid var(--border);
-  padding: 16px 20px 28px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-.mobile-drawer-panel a {
-  display: block;
-  font-family: 'Syne', sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--ink);
-  text-decoration: none;
-  padding: 14px 16px;
-  border-radius: 8px;
-  transition: background 0.15s;
-  cursor: pointer;
-}
-.mobile-drawer-panel a:hover,
-.mobile-drawer-panel a.active { background: rgba(0,0,0,0.06); }
-.mobile-drawer-panel .mobile-cta {
-  background: var(--ink);
-  color: var(--gold-light) !important;
-  margin-top: 8px;
-  text-align: center;
-}
-.mobile-drawer-panel .mobile-cta:hover { background: var(--steel); }
+    .btn-outline {
+      background: transparent;
+      color: var(--ink);
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 14px 32px;
+      border: 1.5px solid var(--ink);
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: inline-block;
+    }
 
-@media (max-width: 900px) {
-  .hamburger { display: flex; }
-}
-</style>
+    .btn-outline:hover {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero-right {
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+      opacity: 0.07;
+      background-image: repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(200, 146, 42, 1) 39px, rgba(200, 146, 42, 1) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(200, 146, 42, 1) 39px, rgba(200, 146, 42, 1) 40px);
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 48px;
+    }
+
+    .hero-card-logo {
+      width: 120px;
+      height: 120px;
+      border-radius: 20px;
+      background: var(--gold);
+      margin: 0 auto 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 40px;
+      color: white;
+      letter-spacing: -2px;
+    }
+
+    .hero-card h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .hero-card>p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 32px;
+      margin-top: 48px;
+      justify-content: center;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 4px;
+    }
+
+    /* ─── SECTION ─── */
+    .section {
+      padding: 100px 64px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 24px;
+    }
+
+    .section-body {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 640px;
+      font-weight: 300;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 64px;
+    }
+
+    /* ─── KPM ─── */
+    .kpm-banner {
+      background: var(--ink);
+      color: white;
+      padding: 32px 64px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .kpm-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .kpm-text h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 4px;
+    }
+
+    .kpm-text p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.6;
+    }
+
+    /* ─── TEAM ─── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px;
+      margin-top: 64px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .team-card {
+      background: white;
+      padding: 48px 40px;
+      transition: background 0.2s;
+    }
+
+    .team-card:hover {
+      background: var(--paper);
+    }
+
+    .team-role {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .team-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px;
+      line-height: 1.1;
+    }
+
+    .team-title {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .team-bio {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #555;
+      font-weight: 300;
+    }
+
+    .team-tag {
+      display: inline-block;
+      margin-top: 20px;
+      background: var(--paper);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 11px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 4px;
+    }
+
+    /* ─── INFO STRIP ─── */
+    .info-strip {
+      background: var(--paper);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 48px 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .info-item h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .info-item p {
+      font-size: 15px;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+
+    .info-item a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    .info-item a:hover {
+      text-decoration: underline;
+    }
+
+    /* ─── FEATURES ─── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .feature-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 36px 32px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── CODING PAGE ─── */
+    .coding-hero {
+      background: var(--ink);
+      padding: 100px 64px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .coding-hero::before {
+      content: '</>';
+      position: absolute;
+      right: 64px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Syne', sans-serif;
+      font-size: 180px;
+      font-weight: 800;
+      color: rgba(200, 146, 42, 0.08);
+      pointer-events: none;
+      letter-spacing: -8px;
+    }
+
+    .coding-hero .section-label {
+      color: var(--gold-light);
+    }
+
+    .coding-hero .section-title {
+      color: white;
+    }
+
+    .coding-hero .section-body {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .coding-notice {
+      background: rgba(200, 146, 42, 0.12);
+      border: 1px solid rgba(200, 146, 42, 0.3);
+      border-radius: 12px;
+      padding: 28px 32px;
+      margin-top: 48px;
+      max-width: 640px;
+    }
+
+    .coding-notice h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 8px;
+    }
+
+    .coding-notice p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      line-height: 1.7;
+    }
+
+    .connect-box {
+      background: var(--ink);
+      border-radius: 16px;
+      padding: 64px;
+      text-align: center;
+      margin-top: 64px;
+    }
+
+    .connect-box h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .connect-box p {
+      font-size: 16px;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+
+    /* ─── AI PAGE ─── */
+    .ai-hero {
+      background: linear-gradient(135deg, #0d2a1a 0%, #0d1117 60%, #1a2a0d 100%);
+      padding: 100px 64px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ai-hero::after {
+      content: 'AI';
+      position: absolute;
+      right: -20px;
+      bottom: -40px;
+      font-family: 'Syne', sans-serif;
+      font-size: 260px;
+      font-weight: 800;
+      color: rgba(42, 107, 74, 0.12);
+      pointer-events: none;
+      letter-spacing: -8px;
+      line-height: 1;
+    }
+
+    .ai-hero .section-label {
+      color: #7dcea0;
+    }
+
+    .ai-hero .section-title {
+      color: white;
+    }
+
+    .ai-hero .section-body {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .program-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .program-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: white;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .program-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .program-header {
+      padding: 40px 36px 28px;
+      background: var(--ink);
+    }
+
+    .program-header.green {
+      background: var(--green);
+    }
+
+    .program-tag {
+      font-family: 'Syne', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 10px;
+    }
+
+    .program-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .program-sub {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      font-style: italic;
+    }
+
+    .program-body {
+      padding: 32px 36px;
+    }
+
+    .program-body ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .program-body ul li {
+      font-size: 14px;
+      color: var(--ink);
+      padding-left: 24px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .program-body ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-weight: 600;
+    }
+
+    .program-actions {
+      padding: 0 36px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn-program {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn-program.solid {
+      background: var(--ink);
+      color: var(--gold-light);
+    }
+
+    .btn-program.solid:hover {
+      background: var(--steel);
+    }
+
+    .btn-program.ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-program.ghost:hover {
+      border-color: var(--ink);
+      color: var(--ink);
+    }
+
+    .gallery-section {
+      background: var(--paper);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 80px 64px;
+    }
+
+    .gallery-levels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .gallery-level {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: white;
+      padding: 32px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      transition: border-color 0.2s;
+      cursor: pointer;
+    }
+
+    .gallery-level:hover {
+      border-color: var(--gold);
+    }
+
+    .level-badge {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+    }
+
+    .level-badge.junior {
+      background: #fef9ec;
+    }
+
+    .level-badge.senior {
+      background: #edf5f0;
+    }
+
+    .level-info h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .level-info p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .sponsor-section {
+      padding: 80px 64px;
+      text-align: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .sponsor-section p {
+      font-size: 16px;
+      color: var(--muted);
+      max-width: 520px;
+      margin: 16px auto 40px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--ink);
+      padding: 64px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 8px;
+    }
+
+    .footer-brand p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.35);
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-cert {
+      display: inline-block;
+      margin-top: 20px;
+      background: rgba(200, 146, 42, 0.15);
+      border: 1px solid rgba(200, 146, 42, 0.3);
+      color: var(--gold-light);
+      font-size: 11px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 4px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col ul li a {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      transition: color 0.2s;
+      cursor: pointer;
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      background: var(--ink);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 20px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .page.active .animate {
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .animate {
+      opacity: 0;
+    }
+
+    .delay-1 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-2 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-3 {
+      animation-delay: 0.3s;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 0 20px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-right {
+        display: none;
+      }
+
+      .hero-left {
+        padding: 60px 24px;
+      }
+
+      .section {
+        padding: 60px 24px;
+      }
+
+      .coding-hero,
+      .ai-hero {
+        padding: 60px 24px;
+      }
+
+      hr.divider {
+        margin: 0 24px;
+      }
+
+      .info-strip {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+      }
+
+      .program-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-levels {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        grid-template-columns: 1fr;
+        padding: 40px 24px;
+      }
+
+      .footer-bottom {
+        padding: 20px 24px;
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
+
+      .kpm-banner {
+        padding: 24px;
+      }
+
+      .connect-box {
+        padding: 40px 24px;
+      }
+
+      .sponsor-section,
+      .gallery-section {
+        padding: 60px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .lang-toggle {
+        margin-left: 0;
+      }
+
+      .hero {
+        min-height: unset;
+      }
+
+      .hero-left {
+        padding: 40px 24px 60px;
+        justify-content: flex-start;
+      }
+
+      h1.hero-title {
+        font-size: clamp(30px, 8vw, 42px);
+      }
+    }
+
+    /* ─── MOBILE NAV DRAWER ─── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      margin-left: 8px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all 0.25s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .mobile-drawer {
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      background: rgba(13, 17, 23, 0.5);
+      backdrop-filter: blur(4px);
+    }
+
+    .mobile-drawer.open {
+      display: block;
+    }
+
+    .mobile-drawer-panel {
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mobile-drawer-panel a {
+      display: block;
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 14px 16px;
+      border-radius: 8px;
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+
+    .mobile-drawer-panel a:hover,
+    .mobile-drawer-panel a.active {
+      background: rgba(0, 0, 0, 0.06);
+    }
+
+    .mobile-drawer-panel .mobile-cta {
+      background: var(--ink);
+      color: var(--gold-light) !important;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .mobile-drawer-panel .mobile-cta:hover {
+      background: var(--steel);
+    }
+
+    @media (max-width: 900px) {
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ─── NAV ─── -->
-<nav>
-  <div class="nav-logo" onclick="showPage('about')">
-    <img src="./images/logo.jpeg" class="logo-img" alt="Innocode">
-    <div class="nav-wordmark">
-      Innocode
-      <span>Pusat Kemahiran</span>
-    </div>
-  </div>
-  <div class="nav-right">
-    <ul class="nav-links">
-      <li><a onclick="showPage('about')" id="nav-about" class="active" data-i18n="nav.about">About Us</a></li>
-      <li><a onclick="showPage('coding')" id="nav-coding" data-i18n="nav.coding">Coding</a></li>
-      <li><a onclick="showPage('ai')" id="nav-ai" data-i18n="nav.ai">AI Classes</a></li>
-      <li><a onclick="showPage('about'); scrollToContact()" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
-    </ul>
-    <div class="lang-toggle">
-      <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" id="btn-bm" onclick="setLang('bm')">BM</button>
-    </div>
-<button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
-  <span></span><span></span><span></span>
-</button>
-  </div>
-</nav>
-
-<!-- ─── MOBILE DRAWER ─── -->
-<div id="mobile-drawer" class="mobile-drawer" onclick="handleDrawerClick(event)">
-  <div class="mobile-drawer-panel">
-    <a onclick="navTo('about')" id="mob-about" data-i18n="nav.about">About Us</a>
-    <a onclick="navTo('coding')" id="mob-coding" data-i18n="nav.coding">Coding</a>
-    <a onclick="navTo('ai')" id="mob-ai" data-i18n="nav.ai">AI Classes</a>
-    <a onclick="navTo('contact')" class="mobile-cta" data-i18n="nav.contact">Contact</a>
-  </div>
-</div>
-
-<!-- ═══════════════════ ABOUT ═══════════════════ -->
-<div id="page-about" class="page active">
-  <div class="hero">
-    <div class="hero-left">
-      <div class="hero-badge animate" data-i18n="about.badge">KPM Certified · Sabah's Only</div>
-      <h1 class="hero-title animate delay-1">
-        <span data-i18n="about.hero.t1">Bridging </span><em data-i18n="about.hero.t2">Human Potential</em><span data-i18n="about.hero.t3"> &amp; the Digital World</span>
-      </h1>
-      <p class="hero-sub animate delay-2" data-i18n="about.hero.sub">Pusat Kemahiran Innocode is Sabah's premier tech education centre — certified by Malaysia's Ministry of Education and built on a foundation of real-world expertise.</p>
-      <div class="hero-actions animate delay-3">
-        <button class="btn-primary" onclick="showPage('coding')" data-i18n="about.cta1">Explore Coding</button>
-        <button class="btn-outline" onclick="showPage('ai')" data-i18n="about.cta2">AI Classes →</button>
+  <!-- ─── NAV ─── -->
+  <nav>
+    <div class="nav-logo" onclick="showPage('about')">
+      <img src="./images/logo.jpeg" class="logo-img" alt="Innocode">
+      <div class="nav-wordmark">
+        Innocode
+        <span>Pusat Kemahiran</span>
       </div>
     </div>
-    <div class="hero-right">
-      <div class="hero-pattern"></div>
-      <div class="hero-card">
-        <!-- <div class="hero-card-logo">IC</div> -->
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a onclick="showPage('about')" id="nav-about" class="active" data-i18n="nav.about">About Us</a></li>
+        <li><a onclick="showPage('coding')" id="nav-coding" data-i18n="nav.coding">Coding</a></li>
+        <li><a onclick="showPage('ai')" id="nav-ai" data-i18n="nav.ai">AI Classes</a></li>
+        <li><a onclick="showPage('about'); scrollToContact()" class="nav-cta" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-toggle">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btn-bm" onclick="setLang('bm')">BM</button>
+      </div>
+      <button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-    <img src="./images/logo.jpeg" class="hero-card-logo" alt="Innocode">
-        <!-- <h2>Innocode</h2>
+  <!-- ─── MOBILE DRAWER ─── -->
+  <div id="mobile-drawer" class="mobile-drawer" onclick="handleDrawerClick(event)">
+    <div class="mobile-drawer-panel">
+      <a onclick="navTo('about')" id="mob-about" data-i18n="nav.about">About Us</a>
+      <a onclick="navTo('coding')" id="mob-coding" data-i18n="nav.coding">Coding</a>
+      <a onclick="navTo('ai')" id="mob-ai" data-i18n="nav.ai">AI Classes</a>
+      <a onclick="navTo('contact')" class="mobile-cta" data-i18n="nav.contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ ABOUT ═══════════════════ -->
+  <div id="page-about" class="page active">
+    <div class="hero">
+      <div class="hero-left">
+        <div class="hero-badge animate" data-i18n="about.badge">KPM Certified · Sabah's Only</div>
+        <h1 class="hero-title animate delay-1">
+          <span data-i18n="about.hero.t1">Bridging </span><em data-i18n="about.hero.t2">Human Potential</em><span
+            data-i18n="about.hero.t3"> &amp; the Digital World</span>
+        </h1>
+        <p class="hero-sub animate delay-2" data-i18n="about.hero.sub">Pusat Kemahiran Innocode is Sabah's premier tech
+          education centre — certified by Malaysia's Ministry of Education and built on a foundation of real-world
+          expertise.</p>
+        <div class="hero-actions animate delay-3">
+          <button class="btn-primary" onclick="showPage('coding')" data-i18n="about.cta1">Explore Coding</button>
+          <button class="btn-outline" onclick="showPage('ai')" data-i18n="about.cta2">AI Classes →</button>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="hero-pattern"></div>
+        <div class="hero-card">
+          <!-- <div class="hero-card-logo">IC</div> -->
+
+          <img src="./images/logo.jpeg" class="hero-card-logo" alt="Innocode">
+          <!-- <h2>Innocode</h2>
         <p data-i18n="about.card.sub">Pusat Kemahiran · Kota Kinabalu</p> -->
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-num">1<span style="font-size:16px">st</span></div><div class="stat-label" data-i18n="about.s1">In Sabah</div></div>
-          <div class="stat"><div class="stat-num">KPM</div><div class="stat-label" data-i18n="about.s2">Certified</div></div>
-          <div class="stat"><div class="stat-num">2</div><div class="stat-label" data-i18n="about.s3">Programs</div></div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-num">1<span style="font-size:16px">st</span></div>
+              <div class="stat-label" data-i18n="about.s1">In Sabah</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">KPM</div>
+              <div class="stat-label" data-i18n="about.s2">Certified</div>
+            </div>
+            <div class="stat">
+              <div class="stat-num">2</div>
+              <div class="stat-label" data-i18n="about.s3">Programs</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="kpm-banner">
-    <div class="kpm-icon">🎓</div>
-    <div class="kpm-text">
-      <h3 data-i18n="kpm.title">Ministry of Education (KPM) Certified</h3>
-      <p data-i18n="kpm.body">Innocode holds the distinction of being the only institution in Sabah awarded this specific certification — a mark of excellence in technical education.</p>
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-label animate" data-i18n="team.label">Our People</div>
-    <h2 class="section-title animate delay-1" data-i18n="team.title">A Visionary Partnership</h2>
-    <p class="section-body animate delay-2" data-i18n="team.sub">Founded by a mother-and-son duo, Innocode blends high-level technical expertise with entrepreneurial heart — united by a shared mission to empower Sabah's community through technology.</p>
-    <div class="team-grid">
-      <div class="team-card">
-        <div class="team-role" data-i18n="bryan.role">Co-Founder &amp; Technologist</div>
-        <div class="team-name">Bryan Lee</div>
-        <div class="team-title" data-i18n="bryan.pos">Lead of Software Innovation &amp; Education</div>
-        <p class="team-bio" data-i18n="bryan.bio">A 2019 Computer Science graduate from the University of Utah, Bryan brings a global perspective to Sabah's tech scene. As a specialist software engineer and game developer, he has a proven track record of delivering high-quality software solutions for both agile startups and established corporations.<br><br>Bryan's deep understanding of code isn't just about building programs — it's about solving problems. His transition into education stems from a desire to demystify complex technologies, ensuring the next generation of creators has the tools to build the future.</p>
-        <span class="team-tag">University of Utah · CS 2019</span>
-      </div>
-      <div class="team-card">
-        <div class="team-role" data-i18n="sallie.role">Co-Founder &amp; Mentor</div>
-        <div class="team-name">Dr. Sallie Tan</div>
-        <div class="team-title" data-i18n="sallie.pos">Director of Business Development &amp; Life Coaching</div>
-        <p class="team-bio" data-i18n="sallie.bio">An alumna of Berkeley International University, Dr. Sallie Tan is a visionary entrepreneur and the founder of Gloria Perfect Aesthetic Sdn Bhd. Through the years, she has cemented her reputation as a successful businesswoman and dedicated life and beauty coach.<br><br>Dr. Sallie is more than just an entrepreneur — she is a connector. Known for her unwavering support of aspiring business owners, she believes that success is best when shared. Her influence ensures that Innocode is a launchpad for professional growth and confidence.</p>
-        <span class="team-tag">Berkeley International University</span>
-      </div>
-      <div class="team-card">
-        <div class="team-role" data-i18n="scholena.role">AI Programme Lead</div>
-        <div class="team-name">Scholena Kinit Leon</div>
-        <div class="team-title" data-i18n="scholena.pos">Facilitator of AI Technology Integration</div>
-        <p class="team-bio" data-i18n="scholena.bio">A Forestry Science graduate from Universiti Malaysia Sabah (UMS) who views the tropical rainforest as the world's most advanced technological system. Scholena is dedicated to bridging the digital gap by bringing AI education to the grassroots level — with no age barriers.<br><br>By blending local wisdom with digital innovation, Scholena focuses on developing ethical and responsible AI users who view technology as a tool for restoration, not destruction.</p>
-        <span class="team-tag">UMS · Sains Perhutanan</span>
+    <div class="kpm-banner">
+      <div class="kpm-icon">🎓</div>
+      <div class="kpm-text">
+        <h3 data-i18n="kpm.title">Ministry of Education (KPM) Certified</h3>
+        <p data-i18n="kpm.body">Innocode holds the distinction of being the only institution in Sabah awarded this
+          specific certification — a mark of excellence in technical education.</p>
       </div>
     </div>
-  </div>
 
-  <hr class="divider">
+    <div class="section">
+      <div class="section-label animate" data-i18n="team.label">Our People</div>
+      <h2 class="section-title animate delay-1" data-i18n="team.title">A Visionary Partnership</h2>
+      <p class="section-body animate delay-2" data-i18n="team.sub">Founded by a mother-and-son duo, Innocode blends
+        high-level technical expertise with entrepreneurial heart — united by a shared mission to empower Sabah's
+        community through technology.</p>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-role" data-i18n="bryan.role">Co-Founder &amp; Technologist</div>
+          <div class="team-name">Bryan Lee</div>
+          <div class="team-title" data-i18n="bryan.pos">Lead of Software Innovation &amp; Education</div>
+          <p class="team-bio" data-i18n="bryan.bio">A 2019 Computer Science graduate from the University of Utah, Bryan
+            brings a global perspective to Sabah's tech scene. As a specialist software engineer and game developer, he
+            has a proven track record of delivering high-quality software solutions for both agile startups and
+            established corporations.<br><br>Bryan's deep understanding of code isn't just about building programs —
+            it's about solving problems. His transition into education stems from a desire to demystify complex
+            technologies, ensuring the next generation of creators has the tools to build the future.</p>
+          <span class="team-tag">University of Utah · CS 2019</span>
+        </div>
+        <div class="team-card">
+          <div class="team-role" data-i18n="sallie.role">Co-Founder &amp; Mentor</div>
+          <div class="team-name">Dr. Sallie Tan</div>
+          <div class="team-title" data-i18n="sallie.pos">Director of Business Development &amp; Life Coaching</div>
+          <p class="team-bio" data-i18n="sallie.bio">An alumna of Berkeley International University, Dr. Sallie Tan is a
+            visionary entrepreneur and the founder of Gloria Perfect Aesthetic Sdn Bhd. Through the years, she has
+            cemented her reputation as a successful businesswoman and dedicated life and beauty coach.<br><br>Dr. Sallie
+            is more than just an entrepreneur — she is a connector. Known for her unwavering support of aspiring
+            business owners, she believes that success is best when shared. Her influence ensures that Innocode is a
+            launchpad for professional growth and confidence.</p>
+          <span class="team-tag">Berkeley International University</span>
+        </div>
+        <div class="team-card">
+          <div class="team-role" data-i18n="scholena.role">AI Programme Lead</div>
+          <div class="team-name">Scholena Kinit Leon</div>
+          <div class="team-title" data-i18n="scholena.pos">Facilitator of AI Technology Integration</div>
+          <p class="team-bio" data-i18n="scholena.bio">A Forestry Science graduate from Universiti Malaysia Sabah (UMS)
+            who views the tropical rainforest as the world's most advanced technological system. Scholena is dedicated
+            to bridging the digital gap by bringing AI education to the grassroots level — with no age
+            barriers.<br><br>By blending local wisdom with digital innovation, Scholena focuses on developing ethical
+            and responsible AI users who view technology as a tool for restoration, not destruction.</p>
+          <span class="team-tag">UMS · Sains Perhutanan</span>
+        </div>
+      </div>
+    </div>
 
-  <div class="section">
-    <div class="section-label" data-i18n="purpose.label">Our Purpose</div>
-    <h2 class="section-title" data-i18n="purpose.title">Why We Do What We Do</h2>
-    <p class="section-body" data-i18n="purpose.sub">We aren't just teaching technical skills — we are building a legacy of self-reliance and innovation right here in Sabah.</p>
-    <div class="features-grid" style="margin-top:48px">
-      <div class="feature-card"><div class="feature-icon">🎯</div><h3 data-i18n="vision.title">Our Vision</h3><p data-i18n="vision.body">Building a legacy of self-reliance and innovation in our homeland of Sabah — where every community member can thrive in the digital age.</p></div>
-      <div class="feature-card"><div class="feature-icon">🛠️</div><h3 data-i18n="mission.title">Our Mission</h3><p data-i18n="mission.body">To equip our community with the digital tools they need to thrive in the modern world — through practical, certified, and meaningful education.</p></div>
-      <div class="feature-card"><div class="feature-icon">🤝</div><h3 data-i18n="belief.title">Our Belief</h3><p data-i18n="belief.body">Success is most meaningful when it is shared. At Innocode, we don't just open doors to technology — we open doors to opportunity.</p></div>
+    <hr class="divider">
+
+    <div class="section">
+      <div class="section-label" data-i18n="purpose.label">Our Purpose</div>
+      <h2 class="section-title" data-i18n="purpose.title">Why We Do What We Do</h2>
+      <p class="section-body" data-i18n="purpose.sub">We aren't just teaching technical skills — we are building a
+        legacy of self-reliance and innovation right here in Sabah.</p>
+      <div class="features-grid" style="margin-top:48px">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3 data-i18n="vision.title">Our Vision</h3>
+          <p data-i18n="vision.body">Building a legacy of self-reliance and innovation in our homeland of Sabah — where
+            every community member can thrive in the digital age.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛠️</div>
+          <h3 data-i18n="mission.title">Our Mission</h3>
+          <p data-i18n="mission.body">To equip our community with the digital tools they need to thrive in the modern
+            world — through practical, certified, and meaningful education.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤝</div>
+          <h3 data-i18n="belief.title">Our Belief</h3>
+          <p data-i18n="belief.body">Success is most meaningful when it is shared. At Innocode, we don't just open doors
+            to technology — we open doors to opportunity.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-strip" id="contact">
+      <div class="info-item">
+        <h4 data-i18n="ct.addr">📍 Address</h4>
+        <p>Suite D3.3, 3rd Floor, Block D<br>Plaza Tanjung Aru, 88100<br>Kota Kinabalu, Sabah</p>
+      </div>
+      <div class="info-item">
+        <h4 data-i18n="ct.email">✉️ Email</h4>
+        <p><a href="/cdn-cgi/l/email-protection#f08085839184999e9e9f939f9495b0979d91999cde939f9d"><span
+              class="__cf_email__"
+              data-cfemail="ec9c999f8d98858282838f838889ac8b818d8580c28f8381">[email&#160;protected]</span></a></p>
+      </div>
+      <div class="info-item">
+        <h4 data-i18n="ct.phone">📞 Phone</h4>
+        <p><a href="tel:0146511382">014 - 651 1382</a></p>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-brand">
+        <h3>Pusat Kemahiran Innocode</h3>
+        <p data-i18n="ft.tag">Bridging human potential with the digital landscape — one student at a time.</p><span
+          class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.nav">Navigate</h4>
+        <ul>
+          <li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li>
+          <li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li>
+          <li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li>
+          <li><a onclick="showPage('about');scrollToContact()" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.prog">Programmes</h4>
+        <ul>
+          <li><a onclick="showPage('ai')">Safari Rimba Digital</a></li>
+          <li><a onclick="showPage('ai')">Timeless Leader Mastermind</a></li>
+          <li><a onclick="showPage('coding')" data-i18n="ft.softdev">Software Development</a></li>
+          <li><a onclick="showPage('ai')" data-i18n="ft.gallery">Student's Creation Gallery</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2026 Pusat Kemahiran Innocode · Kota Kinabalu, Sabah</p>
+      <p data-i18n="ft.cert">★ KPM Certified</p>
     </div>
   </div>
 
-  <div class="info-strip" id="contact">
-    <div class="info-item"><h4 data-i18n="ct.addr">📍 Address</h4><p>Suite D3.3, 3rd Floor, Block D<br>Plaza Tanjung Aru, 88100<br>Kota Kinabalu, Sabah</p></div>
-    <div class="info-item"><h4 data-i18n="ct.email">✉️ Email</h4><p><a href="/cdn-cgi/l/email-protection#f08085839184999e9e9f939f9495b0979d91999cde939f9d"><span class="__cf_email__" data-cfemail="ec9c999f8d98858282838f838889ac8b818d8580c28f8381">[email&#160;protected]</span></a></p></div>
-    <div class="info-item"><h4 data-i18n="ct.phone">📞 Phone</h4><p><a href="tel:0146511382">014 - 651 1382</a></p></div>
-  </div>
-
-  <footer>
-    <div class="footer-brand"><h3>Pusat Kemahiran Innocode</h3><p data-i18n="ft.tag">Bridging human potential with the digital landscape — one student at a time.</p><span class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span></div>
-    <div class="footer-col"><h4 data-i18n="ft.nav">Navigate</h4><ul><li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li><li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li><li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li><li><a onclick="showPage('about');scrollToContact()" data-i18n="nav.contact">Contact</a></li></ul></div>
-    <div class="footer-col"><h4 data-i18n="ft.prog">Programmes</h4><ul><li><a onclick="showPage('ai')">Safari Rimba Digital</a></li><li><a onclick="showPage('ai')">Timeless Leader Mastermind</a></li><li><a onclick="showPage('coding')" data-i18n="ft.softdev">Software Development</a></li><li><a onclick="showPage('ai')" data-i18n="ft.gallery">Student's Creation Gallery</a></li></ul></div>
-  </footer>
-  <div class="footer-bottom"><p>© 2026 Pusat Kemahiran Innocode · Kota Kinabalu, Sabah</p><p data-i18n="ft.cert">★ KPM Certified</p></div>
-</div>
-
-<!-- ═══════════════════ CODING ═══════════════════ -->
-<div id="page-coding" class="page">
-  <div class="coding-hero">
-    <div class="section-label animate" data-i18n="cod.label">Pengekodan / Coding</div>
-    <h1 class="section-title animate delay-1" style="max-width:600px" data-i18n="cod.title">Build Real Skills for the Real World</h1>
-    <p class="section-body animate delay-2" data-i18n="cod.sub">Our coding programme is designed for aspiring developers, career changers, and anyone ready to turn logic into living software.</p>
-    <div class="coding-notice animate delay-3">
-      <h4 data-i18n="cod.nt">📣 Coming Soon — Enrolment Open</h4>
-      <p data-i18n="cod.nb">Whether you're a student looking to learn, or an experienced developer interested in tutoring opportunities — we want to hear from you.</p>
+  <!-- ═══════════════════ CODING ═══════════════════ -->
+  <div id="page-coding" class="page">
+    <div class="coding-hero">
+      <div class="section-label animate" data-i18n="cod.label">Pengekodan / Coding</div>
+      <h1 class="section-title animate delay-1" style="max-width:600px" data-i18n="cod.title">Build Real Skills for the
+        Real World</h1>
+      <p class="section-body animate delay-2" data-i18n="cod.sub">Our coding programme is designed for aspiring
+        developers, career changers, and anyone ready to turn logic into living software.</p>
+      <div class="coding-notice animate delay-3">
+        <h4 data-i18n="cod.nt">📣 Coming Soon — Enrolment Open</h4>
+        <p data-i18n="cod.nb">Whether you're a student looking to learn, or an experienced developer interested in
+          tutoring opportunities — we want to hear from you.</p>
+      </div>
     </div>
-  </div>
-  <div class="section">
-    <div class="section-label" data-i18n="cod.ol">What We Offer</div>
-    <h2 class="section-title" data-i18n="cod.ot">Code That Solves Problems</h2>
-    <p class="section-body" data-i18n="cod.os">Our approach isn't just teaching syntax — it's teaching you to think like an engineer. Every lesson is grounded in real-world problem solving.</p>
-    <div class="features-grid">
-      <div class="feature-card"><div class="feature-icon">🖥️</div><h3 data-i18n="cod.f1t">Software Development</h3><p data-i18n="cod.f1b">From web apps to desktop software, learn the full stack of modern software engineering with guidance from industry professionals.</p></div>
-      <div class="feature-card"><div class="feature-icon">🎮</div><h3 data-i18n="cod.f2t">Game Development</h3><p data-i18n="cod.f2b">Bring ideas to life in interactive form. Learn game logic, design patterns, and creative problem solving through game dev fundamentals.</p></div>
-      <div class="feature-card"><div class="feature-icon">🔧</div><h3 data-i18n="cod.f3t">Problem-First Thinking</h3><p data-i18n="cod.f3b">Code is a tool, not a destination. We train students to identify, scope, and solve real problems before writing a single line.</p></div>
-      <!-- <div class="feature-card"><div class="feature-icon">🏢</div><h3 data-i18n="cod.f4t">industry-ready projects</h3><p data-i18n="cod.f4b">work on real deliverables. our projects mirror the standards expected at agile startups and established corporations.</p></div>
+    <div class="section">
+      <div class="section-label" data-i18n="cod.ol">What We Offer</div>
+      <h2 class="section-title" data-i18n="cod.ot">Code That Solves Problems</h2>
+      <p class="section-body" data-i18n="cod.os">Our approach isn't just teaching syntax — it's teaching you to think
+        like an engineer. Every lesson is grounded in real-world problem solving.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🖥️</div>
+          <h3 data-i18n="cod.f1t">Software Development</h3>
+          <p data-i18n="cod.f1b">From web apps to desktop software, learn the full stack of modern software engineering
+            with guidance from industry professionals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <h3 data-i18n="cod.f2t">Game Development</h3>
+          <p data-i18n="cod.f2b">Bring ideas to life in interactive form. Learn game logic, design patterns, and
+            creative problem solving through game dev fundamentals.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔧</div>
+          <h3 data-i18n="cod.f3t">Problem-First Thinking</h3>
+          <p data-i18n="cod.f3b">Code is a tool, not a destination. We train students to identify, scope, and solve real
+            problems before writing a single line.</p>
+        </div>
+        <!-- <div class="feature-card"><div class="feature-icon">🏢</div><h3 data-i18n="cod.f4t">industry-ready projects</h3><p data-i18n="cod.f4b">work on real deliverables. our projects mirror the standards expected at agile startups and established corporations.</p></div>
       <div class="feature-card"><div class="feature-icon">👨‍🏫</div><h3 data-i18n="cod.f5t">expert tutors</h3><p data-i18n="cod.f5b">learn from tutors that have .</p></div>
       <div class="feature-card"><div class="feature-icon">🌐</div><h3 data-i18n="cod.f6t">global perspective, local heart</h3><p data-i18n="cod.f6b">we bring international best practices to sabah's tech scene — making world-class software education accessible right here at home.</p></div> -->
-    </div>
-    <div class="connect-box">
-      <h3 data-i18n="cod.ct">Students &amp; Tutors Welcome</h3>
-      <p data-i18n="cod.cs">Whether you want to learn or teach, Innocode's coding programme has a place for you.</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <a href="/cdn-cgi/l/email-protection#92e2e7e1f3e6fbfcfcfdf1fdf6f7d2f5fff3fbfebcf1fdff" class="btn-primary" data-i18n="cod.ce">Email Us</a>
-        <a href="tel:0146511382" class="btn-outline" style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2)">014 - 651 1382</a>
+      </div>
+      <div class="connect-box">
+        <h3 data-i18n="cod.ct">Students &amp; Tutors Welcome</h3>
+        <p data-i18n="cod.cs">Whether you want to learn or teach, Innocode's coding programme has a place for you.</p>
+        <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+          <a href="/cdn-cgi/l/email-protection#92e2e7e1f3e6fbfcfcfdf1fdf6f7d2f5fff3fbfebcf1fdff" class="btn-primary"
+            data-i18n="cod.ce">Email Us</a>
+          <a href="tel:0146511382" class="btn-outline"
+            style="color:rgba(255,255,255,0.7);border-color:rgba(255,255,255,0.2)">014 - 651 1382</a>
+        </div>
       </div>
     </div>
-  </div>
-  <footer>
-    <div class="footer-brand"><h3>Pusat Kemahiran Innocode</h3><p data-i18n="ft.ctag">KPM-certified technical education in the heart of Kota Kinabalu, Sabah.</p><span class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span></div>
-    <div class="footer-col"><h4 data-i18n="ft.nav">Navigate</h4><ul><li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li><li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li><li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li></ul></div>
-    <div class="footer-col"><h4 data-i18n="ft.contact">Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#3444414755405d5a5a5b575b5051745359555d581a575b59"><span class="__cf_email__" data-cfemail="5525202634213c3b3b3a363a3130153238343c397b363a38">[email&#160;protected]</span></a></li><li><a href="tel:0146511382">014 - 651 1382</a></li></ul></div>
-  </footer>
-  <div class="footer-bottom"><p>© 2026 Pusat Kemahiran Innocode</p><p data-i18n="ft.cert">★ KPM Certified</p></div>
-</div>
-
-<!-- ═══════════════════ AI ═══════════════════ -->
-<div id="page-ai" class="page">
-  <div class="ai-hero">
-    <div class="section-label animate" data-i18n="ai.label">Teknologi AI / AI Technology</div>
-    <h1 class="section-title animate delay-1" style="max-width:640px;position:relative;z-index:1" data-i18n="ai.title">The Next Great Tool for Community Empowerment</h1>
-    <p class="section-body animate delay-2" style="position:relative;z-index:1" data-i18n="ai.sub">Artificial Intelligence isn't just for tech experts — it belongs to everyone. At Innocode, we're bringing AI education to the grassroots level, led by Scholena Kinit Leon.</p>
-  </div>
-  <div class="section">
-    <div class="section-label" data-i18n="ai.pl">Our AI Programmes</div>
-    <h2 class="section-title" data-i18n="ai.pt">Two Programmes, One Mission</h2>
-    <p class="section-body" data-i18n="ai.ps">Whether you're a curious child or an experienced leader, our AI programmes are designed to meet you where you are — and take you further.</p>
-    <div class="program-grid">
-      <div class="program-card">
-        <div class="program-header green">
-          <div class="program-tag" data-i18n="srd.tag">Programme 1 · AI for Community</div>
-          <div class="program-name">Safari Rimba Digital 🌿</div>
-          <div class="program-sub" data-i18n="srd.sub">Digital Jungle Safari</div>
-        </div>
-        <div class="program-body"><ul>
-          <li><strong data-i18n="srd.l1b">About the Programme</strong><span data-i18n="srd.l1t"> — Nature-inspired AI literacy for all ages, blending Sabah's heritage with digital innovation</span></li>
-          <li><strong data-i18n="srd.l2b">No age barriers</strong><span data-i18n="srd.l2t"> — from children to community elders</span></li>
-          <li><strong data-i18n="srd.l3b">Ethical AI focus</strong><span data-i18n="srd.l3t"> — technology as a tool for restoration, not destruction</span></li>
-          <li><strong data-i18n="srd.l4b">Rooted in local wisdom</strong><span data-i18n="srd.l4t"> — Scholena's forestry background meets the digital frontier</span></li>
-        </ul></div>
-        <div class="program-actions">
-          <button class="btn-program solid" onclick="openRsvp('srd')" data-i18n="srd.b1">Book a Session</button>
-        </div>
+    <footer>
+      <div class="footer-brand">
+        <h3>Pusat Kemahiran Innocode</h3>
+        <p data-i18n="ft.ctag">KPM-certified technical education in the heart of Kota Kinabalu, Sabah.</p><span
+          class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span>
       </div>
-      <div class="program-card">
-        <div class="program-header">
-          <div class="program-tag" data-i18n="tlm.tag">Programme 2 · AI for Leaders</div>
-          <div class="program-name">Timeless Leader Mastermind 👑</div>
-          <div class="program-sub" data-i18n="tlm.sub">AI for Experienced Leaders</div>
-        </div>
-        <div class="program-body"><ul>
-          <li><strong data-i18n="tlm.l1b">About the Programme</strong><span data-i18n="tlm.l1t"> — AI integration designed for business owners, managers, and experienced professionals</span></li>
-          <li><strong data-i18n="tlm.l2b">Stay relevant</strong><span data-i18n="tlm.l2t"> — navigate the digital revolution with confidence</span></li>
-          <li><strong data-i18n="tlm.l3b">Strategic AI use</strong><span data-i18n="tlm.l3t"> — apply AI tools to real business and leadership contexts</span></li>
-          <li><strong data-i18n="tlm.l4b">Courses Offered</strong><span data-i18n="tlm.l4t"> — enquire with us for the current course catalogue</span></li>
-        </ul></div>
-        <div class="program-actions">
-          <button class="btn-program solid" onclick="openRsvp('tlm')" data-i18n="tlm.b1">Enquire About Courses</button>
-        </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.nav">Navigate</h4>
+        <ul>
+          <li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li>
+          <li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li>
+          <li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li>
+        </ul>
       </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.contact">Contact</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#3444414755405d5a5a5b575b5051745359555d581a575b59"><span
+                class="__cf_email__"
+                data-cfemail="5525202634213c3b3b3a363a3130153238343c397b363a38">[email&#160;protected]</span></a></li>
+          <li><a href="tel:0146511382">014 - 651 1382</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2026 Pusat Kemahiran Innocode</p>
+      <p data-i18n="ft.cert">★ KPM Certified</p>
     </div>
   </div>
 
-  <!-- <div class="gallery-section">
+  <!-- ═══════════════════ AI ═══════════════════ -->
+  <div id="page-ai" class="page">
+    <div class="ai-hero">
+      <div class="section-label animate" data-i18n="ai.label">Teknologi AI / AI Technology</div>
+      <h1 class="section-title animate delay-1" style="max-width:640px;position:relative;z-index:1"
+        data-i18n="ai.title">The Next Great Tool for Community Empowerment</h1>
+      <p class="section-body animate delay-2" style="position:relative;z-index:1" data-i18n="ai.sub">Artificial
+        Intelligence isn't just for tech experts — it belongs to everyone. At Innocode, we're bringing AI education to
+        the grassroots level, led by Scholena Kinit Leon.</p>
+    </div>
+    <div class="section">
+      <div class="section-label" data-i18n="ai.pl">Our AI Programmes</div>
+      <h2 class="section-title" data-i18n="ai.pt">Two Programmes, One Mission</h2>
+      <p class="section-body" data-i18n="ai.ps">Whether you're a curious child or an experienced leader, our AI
+        programmes are designed to meet you where you are — and take you further.</p>
+      <div class="program-grid">
+        <div class="program-card">
+          <div class="program-header green">
+            <div class="program-tag" data-i18n="srd.tag">Programme 1 · AI for Community</div>
+            <div class="program-name">Safari Rimba Digital 🌿</div>
+            <div class="program-sub" data-i18n="srd.sub">Digital Jungle Safari</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><strong data-i18n="srd.l1b">About the Programme</strong><span data-i18n="srd.l1t"> — Nature-inspired
+                  AI literacy for all ages, blending Sabah's heritage with digital innovation</span></li>
+              <li><strong data-i18n="srd.l2b">No age barriers</strong><span data-i18n="srd.l2t"> — from children to
+                  community elders</span></li>
+              <li><strong data-i18n="srd.l3b">Ethical AI focus</strong><span data-i18n="srd.l3t"> — technology as a tool
+                  for restoration, not destruction</span></li>
+              <li><strong data-i18n="srd.l4b">Rooted in local wisdom</strong><span data-i18n="srd.l4t"> — Scholena's
+                  forestry background meets the digital frontier</span></li>
+            </ul>
+          </div>
+          <div class="program-actions">
+            <button class="btn-program solid" onclick="openRsvp('srd')" data-i18n="srd.b1">Book a Session</button>
+          </div>
+        </div>
+        <div class="program-card">
+          <div class="program-header">
+            <div class="program-tag" data-i18n="tlm.tag">Programme 2 · AI for Leaders</div>
+            <div class="program-name">Timeless Leader Mastermind 👑</div>
+            <div class="program-sub" data-i18n="tlm.sub">AI for Experienced Leaders</div>
+          </div>
+          <div class="program-body">
+            <ul>
+              <li><strong data-i18n="tlm.l1b">About the Programme</strong><span data-i18n="tlm.l1t"> — AI integration
+                  designed for business owners, managers, and experienced professionals</span></li>
+              <li><strong data-i18n="tlm.l2b">Stay relevant</strong><span data-i18n="tlm.l2t"> — navigate the digital
+                  revolution with confidence</span></li>
+              <li><strong data-i18n="tlm.l3b">Strategic AI use</strong><span data-i18n="tlm.l3t"> — apply AI tools to
+                  real business and leadership contexts</span></li>
+              <li><strong data-i18n="tlm.l4b">Courses Offered</strong><span data-i18n="tlm.l4t"> — enquire with us for
+                  the current course catalogue</span></li>
+            </ul>
+          </div>
+          <div class="program-actions">
+            <button class="btn-program solid" onclick="openRsvp('tlm')" data-i18n="tlm.b1">Enquire About
+              Courses</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="gallery-section">
     <div style="max-width:1200px;margin:0 auto">
       <div class="section-label" data-i18n="gal.label">Galeri Ciptaan Pelajar</div>
       <h2 class="section-title" data-i18n="gal.title">Student's Creation Gallery</h2>
@@ -583,441 +1599,481 @@ h1.hero-title {
     </div>
   </div>
  -->
-  <div class="sponsor-section gallery-section">
-    <div class="section-label" style="text-align:center" data-i18n="sp.label">Support Our Mission</div>
-    <h2 class="section-title" style="text-align:center" data-i18n="sp.title">Become a Sponsor</h2>
-    <p data-i18n="sp.body">Help us bring AI education to every corner of Sabah's community. Your support directly funds student scholarships, community workshops, and programme development.</p>
-    <a href="/cdn-cgi/l/email-protection#aededbddcfdac7c0c0c1cdc1cacbeec9c3cfc7c280cdc1c391dddbccc4cbcdda93fddec1c0ddc1dcddc6c7de8eebc0dfdbc7dcd7" class="btn-primary" data-i18n="sp.btn">Get in Touch</a>
-  </div>
-
-  <footer>
-    <div class="footer-brand"><h3>Pusat Kemahiran Innocode</h3><p data-i18n="ft.atag">KPM-certified technical education. Empowering Sabah's community with the tools of tomorrow.</p><span class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span></div>
-    <div class="footer-col"><h4 data-i18n="ft.nav">Navigate</h4><ul><li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li><li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li><li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li></ul></div>
-    <div class="footer-col"><h4 data-i18n="ft.contact">Contact</h4><ul><li><a href="/cdn-cgi/l/email-protection#cababfb9abbea3a4a4a5a9a5aeaf8aada7aba3a6e4a9a5a7"><span class="__cf_email__" data-cfemail="1c6c696f7d68757272737f7378795c7b717d7570327f7371">[email&#160;protected]</span></a></li><li><a href="tel:0146511382">014 - 651 1382</a></li></ul></div>
-  </footer>
-  <div class="footer-bottom"><p>© 2026 Pusat Kemahiran Innocode</p><p data-i18n="ft.cert">★ KPM Certified</p></div>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><!-- ─── EmailJS ─── -->
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
-<!-- ─── RSVP MODAL ─── -->
-<div id="rsvp-modal" style="display:none;position:fixed;inset:0;z-index:999;background:rgba(13,17,23,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
-  <div style="background:var(--cream);border-radius:16px;width:100%;max-width:500px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;">
-
-    <!-- coloured top bar — swaps per programme -->
-    <div id="rsvp-bar" style="height:5px;background:var(--gold);"></div>
-
-    <!-- header -->
-    <div style="padding:36px 40px 24px;border-bottom:1px solid var(--border);">
-      <button onclick="closeRsvp()" style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;">✕</button>
-      <div id="rsvp-tag" style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;"></div>
-      <h2 id="rsvp-title" style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--ink);margin:0;"></h2>
-      <p id="rsvp-sub" style="font-size:13px;color:var(--muted);margin:6px 0 0;font-style:italic;"></p>
+    <div class="sponsor-section gallery-section">
+      <div class="section-label" style="text-align:center" data-i18n="sp.label">Support Our Mission</div>
+      <h2 class="section-title" style="text-align:center" data-i18n="sp.title">Become a Sponsor</h2>
+      <p data-i18n="sp.body">Help us bring AI education to every corner of Sabah's community. Your support directly
+        funds student scholarships, community workshops, and programme development.</p>
+      <a href="/cdn-cgi/l/email-protection#aededbddcfdac7c0c0c1cdc1cacbeec9c3cfc7c280cdc1c391dddbccc4cbcdda93fddec1c0ddc1dcddc6c7de8eebc0dfdbc7dcd7"
+        class="btn-primary" data-i18n="sp.btn">Get in Touch</a>
     </div>
 
-    <!-- form -->
-    <div style="padding:32px 40px 36px;">
-      <div id="rsvp-success" style="display:none;text-align:center;padding:24px;background:#edf5f0;border:1.5px solid var(--green);border-radius:10px;margin-bottom:20px;">
-        <div style="font-size:32px;margin-bottom:8px;">🎉</div>
-        <h3 id="rsvp-success-title" style="font-family:'Syne',sans-serif;font-weight:800;color:var(--green);margin:0 0 6px;"></h3>
-        <p id="rsvp-success-body" style="font-size:14px;color:#555;margin:0;line-height:1.6;"></p>
+    <footer>
+      <div class="footer-brand">
+        <h3>Pusat Kemahiran Innocode</h3>
+        <p data-i18n="ft.atag">KPM-certified technical education. Empowering Sabah's community with the tools of
+          tomorrow.</p><span class="footer-cert" data-i18n="ft.cert">★ KPM Certified</span>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.nav">Navigate</h4>
+        <ul>
+          <li><a onclick="showPage('about')" data-i18n="nav.about">About Us</a></li>
+          <li><a onclick="showPage('coding')" data-i18n="nav.coding">Coding</a></li>
+          <li><a onclick="showPage('ai')" data-i18n="nav.ai">AI Classes</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="ft.contact">Contact</h4>
+        <ul>
+          <li><a href="/cdn-cgi/l/email-protection#cababfb9abbea3a4a4a5a9a5aeaf8aada7aba3a6e4a9a5a7"><span
+                class="__cf_email__"
+                data-cfemail="1c6c696f7d68757272737f7378795c7b717d7570327f7371">[email&#160;protected]</span></a></li>
+          <li><a href="tel:0146511382">014 - 651 1382</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="footer-bottom">
+      <p>© 2026 Pusat Kemahiran Innocode</p>
+      <p data-i18n="ft.cert">★ KPM Certified</p>
+    </div>
+  </div>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <!-- ─── EmailJS ─── -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+  <!-- ─── RSVP MODAL ─── -->
+  <div id="rsvp-modal"
+    style="display:none;position:fixed;inset:0;z-index:999;background:rgba(13,17,23,0.85);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:20px;">
+    <div
+      style="background:var(--cream);border-radius:16px;width:100%;max-width:500px;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.4);position:relative;">
+
+      <!-- coloured top bar — swaps per programme -->
+      <div id="rsvp-bar" style="height:5px;background:var(--gold);"></div>
+
+      <!-- header -->
+      <div style="padding:36px 40px 24px;border-bottom:1px solid var(--border);">
+        <button onclick="closeRsvp()"
+          style="position:absolute;top:18px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;">✕</button>
+        <div id="rsvp-tag"
+          style="font-family:'Syne',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">
+        </div>
+        <h2 id="rsvp-title"
+          style="font-family:'Syne',sans-serif;font-weight:800;font-size:22px;color:var(--ink);margin:0;"></h2>
+        <p id="rsvp-sub" style="font-size:13px;color:var(--muted);margin:6px 0 0;font-style:italic;"></p>
       </div>
 
-      <form id="rsvp-form">
-        <div style="margin-bottom:20px;">
-          <label style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;" id="lbl-name">Full Name</label>
-          <input id="rsvp-name" type="text" required placeholder="Ahmad bin Abdullah"
-            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
+      <!-- form -->
+      <div style="padding:32px 40px 36px;">
+        <div id="rsvp-success"
+          style="display:none;text-align:center;padding:24px;background:#edf5f0;border:1.5px solid var(--green);border-radius:10px;margin-bottom:20px;">
+          <div style="font-size:32px;margin-bottom:8px;">🎉</div>
+          <h3 id="rsvp-success-title"
+            style="font-family:'Syne',sans-serif;font-weight:800;color:var(--green);margin:0 0 6px;"></h3>
+          <p id="rsvp-success-body" style="font-size:14px;color:#555;margin:0;line-height:1.6;"></p>
         </div>
-        <div style="margin-bottom:20px;">
-          <label style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;" id="lbl-phone">Phone Number</label>
-          <input id="rsvp-phone" type="tel" required placeholder="+60 12-345 6789"
-            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
-        </div>
-        <div style="margin-bottom:28px;">
-          <label style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;" id="lbl-email">Email Address</label>
-          <input id="rsvp-email" type="email" required placeholder="ahmad@example.com"
-            style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
-        </div>
-        <button id="rsvp-submit" type="submit"
-          style="width:100%;padding:14px;background:var(--ink);color:var(--gold-light);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;">
-          <span id="rsvp-submit-label">Submit</span>
-        </button>
-      </form>
+
+        <form id="rsvp-form">
+          <div style="margin-bottom:20px;">
+            <label
+              style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;"
+              id="lbl-name">Full Name</label>
+            <input id="rsvp-name" type="text" required placeholder="Ahmad bin Abdullah"
+              style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
+          </div>
+          <div style="margin-bottom:20px;">
+            <label
+              style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;"
+              id="lbl-phone">Phone Number</label>
+            <input id="rsvp-phone" type="tel" required placeholder="+60 12-345 6789"
+              style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
+          </div>
+          <div style="margin-bottom:28px;">
+            <label
+              style="display:block;font-family:'Syne',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;"
+              id="lbl-email">Email Address</label>
+            <input id="rsvp-email" type="email" required placeholder="ahmad@example.com"
+              style="width:100%;padding:12px 16px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:white;transition:border-color 0.2s;outline:none;">
+          </div>
+          <button id="rsvp-submit" type="submit"
+            style="width:100%;padding:14px;background:var(--ink);color:var(--gold-light);font-family:'Syne',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;transition:background 0.2s;">
+            <span id="rsvp-submit-label">Submit</span>
+          </button>
+        </form>
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-// ─── EmailJS init ───
-(function(){ emailjs.init("NV_SpfZbysWYRxRr_"); })();
+  <script>
+    // ─── EmailJS init ───
+    (function () { emailjs.init("NV_SpfZbysWYRxRr_"); })();
 
-// ─── Programme config ───
-// Replace TEMPLATE_SRD_ID below with your Safari Rimba Digital template ID once created
-const RSVP_CONFIG = {
-  srd: {
-    templateId: 'template_cqkyiow',   // ← swap this after creating the template
-    barColor: 'var(--green)',
-    en: {
-      tag:     'Programme 1 · AI for Community',
-      title:   'Safari Rimba Digital 🌿',
-      sub:     'Book a session — we\'ll be in touch within 24 hours',
-      btnText: 'Book My Session',
-      successTitle: 'Session Booked!',
-      successBody:  'Thank you! We\'ll contact you within 24–48 hours to confirm your session.',
-    },
-    bm: {
-      tag:     'Program 1 · AI untuk Komuniti',
-      title:   'Safari Rimba Digital 🌿',
-      sub:     'Tempah sesi — kami akan menghubungi anda dalam masa 24 jam',
-      btnText: 'Tempah Sesi Saya',
-      successTitle: 'Sesi Ditempah!',
-      successBody:  'Terima kasih! Kami akan menghubungi anda dalam masa 24–48 jam untuk mengesahkan sesi anda.',
-    },
-  },
-  tlm: {
-    templateId: 'template_1g2md0f',   // existing Timeless Leader template
-    barColor: 'linear-gradient(90deg, #D4AF37, #F4E4B7, #D4AF37)',
-    en: {
-      tag:     'Programme 2 · AI for Leaders',
-      title:   'Timeless Leader Mastermind 👑',
-      sub:     'Reserve your spot — limited places available',
-      btnText: 'Submit RSVP',
-      successTitle: 'Congratulations!',
-      successBody:  'Your registration was successful. We will contact you shortly!',
-    },
-    bm: {
-      tag:     'Program 2 · AI untuk Pemimpin',
-      title:   'Timeless Leader Mastermind 👑',
-      sub:     'Tempah tempat anda — tempat adalah terhad',
-      btnText: 'Hantar Permohonan',
-      successTitle: 'Tahniah!',
-      successBody:  'Pendaftaran anda telah berjaya. Kami akan menghubungi anda tidak lama lagi!',
-    },
-  },
-};
+    // ─── Programme config ───
+    // Replace TEMPLATE_SRD_ID below with your Safari Rimba Digital template ID once created
+    const RSVP_CONFIG = {
+      srd: {
+        templateId: 'template_cqkyiow',   // ← swap this after creating the template
+        barColor: 'var(--green)',
+        en: {
+          tag: 'Programme 1 · AI for Community',
+          title: 'Safari Rimba Digital 🌿',
+          sub: 'Book a session — we\'ll be in touch within 24 hours',
+          btnText: 'Book My Session',
+          successTitle: 'Session Booked!',
+          successBody: 'Thank you! We\'ll contact you within 24–48 hours to confirm your session.',
+        },
+        bm: {
+          tag: 'Program 1 · AI untuk Komuniti',
+          title: 'Safari Rimba Digital 🌿',
+          sub: 'Tempah sesi — kami akan menghubungi anda dalam masa 24 jam',
+          btnText: 'Tempah Sesi Saya',
+          successTitle: 'Sesi Ditempah!',
+          successBody: 'Terima kasih! Kami akan menghubungi anda dalam masa 24–48 jam untuk mengesahkan sesi anda.',
+        },
+      },
+      tlm: {
+        templateId: 'template_1g2md0f',   // existing Timeless Leader template
+        barColor: 'linear-gradient(90deg, #D4AF37, #F4E4B7, #D4AF37)',
+        en: {
+          tag: 'Programme 2 · AI for Leaders',
+          title: 'Timeless Leader Mastermind 👑',
+          sub: 'Reserve your spot — limited places available',
+          btnText: 'Submit RSVP',
+          successTitle: 'Congratulations!',
+          successBody: 'Your registration was successful. We will contact you shortly!',
+        },
+        bm: {
+          tag: 'Program 2 · AI untuk Pemimpin',
+          title: 'Timeless Leader Mastermind 👑',
+          sub: 'Tempah tempat anda — tempat adalah terhad',
+          btnText: 'Hantar Permohonan',
+          successTitle: 'Tahniah!',
+          successBody: 'Pendaftaran anda telah berjaya. Kami akan menghubungi anda tidak lama lagi!',
+        },
+      },
+    };
 
-let activeProgram = null;
+    let activeProgram = null;
 
-function openRsvp(program) {
-  activeProgram = program;
-  const cfg = RSVP_CONFIG[program];
-  const l   = (typeof lang !== 'undefined' ? lang : 'en') === 'bm' ? 'bm' : 'en';
-  const txt = cfg[l];
+    function openRsvp(program) {
+      activeProgram = program;
+      const cfg = RSVP_CONFIG[program];
+      const l = (typeof lang !== 'undefined' ? lang : 'en') === 'bm' ? 'bm' : 'en';
+      const txt = cfg[l];
 
-  // header
-  document.getElementById('rsvp-tag').textContent   = txt.tag;
-  document.getElementById('rsvp-title').textContent = txt.title;
-  document.getElementById('rsvp-sub').textContent   = txt.sub;
+      // header
+      document.getElementById('rsvp-tag').textContent = txt.tag;
+      document.getElementById('rsvp-title').textContent = txt.title;
+      document.getElementById('rsvp-sub').textContent = txt.sub;
 
-  // colour bar
-  const bar = document.getElementById('rsvp-bar');
-  bar.style.background = cfg.barColor;
+      // colour bar
+      const bar = document.getElementById('rsvp-bar');
+      bar.style.background = cfg.barColor;
 
-  // submit label
-  document.getElementById('rsvp-submit-label').textContent = txt.btnText;
+      // submit label
+      document.getElementById('rsvp-submit-label').textContent = txt.btnText;
 
-  // field labels (bilingual)
-  document.getElementById('lbl-name').textContent  = l === 'bm' ? 'Nama Penuh'       : 'Full Name';
-  document.getElementById('lbl-phone').textContent = l === 'bm' ? 'Nombor Telefon'    : 'Phone Number';
-  document.getElementById('lbl-email').textContent = l === 'bm' ? 'Alamat E-mel'      : 'Email Address';
+      // field labels (bilingual)
+      document.getElementById('lbl-name').textContent = l === 'bm' ? 'Nama Penuh' : 'Full Name';
+      document.getElementById('lbl-phone').textContent = l === 'bm' ? 'Nombor Telefon' : 'Phone Number';
+      document.getElementById('lbl-email').textContent = l === 'bm' ? 'Alamat E-mel' : 'Email Address';
 
-  // reset
-  document.getElementById('rsvp-form').reset();
-  document.getElementById('rsvp-success').style.display = 'none';
-  document.getElementById('rsvp-form').style.display    = 'block';
+      // reset
+      document.getElementById('rsvp-form').reset();
+      document.getElementById('rsvp-success').style.display = 'none';
+      document.getElementById('rsvp-form').style.display = 'block';
 
-  const modal = document.getElementById('rsvp-modal');
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
-
-function closeRsvp() {
-  document.getElementById('rsvp-modal').style.display = 'none';
-  document.body.style.overflow = '';
-}
-
-// Close on backdrop click
-document.getElementById('rsvp-modal').addEventListener('click', function(e) {
-  if (e.target === this) closeRsvp();
-});
-
-// Form submission
-document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const cfg = RSVP_CONFIG[activeProgram];
-  const l   = (typeof lang !== 'undefined' ? lang : 'en') === 'bm' ? 'bm' : 'en';
-  const txt = cfg[l];
-
-  const btn = document.getElementById('rsvp-submit');
-  btn.disabled = true;
-  btn.style.opacity = '0.6';
-  document.getElementById('rsvp-submit-label').textContent = l === 'bm' ? 'Menghantar...' : 'Sending...';
-
-  emailjs.send(
-    'service_rt59ybl',
-    cfg.templateId,
-    {
-      to_name:    document.getElementById('rsvp-name').value,
-      to_email:   document.getElementById('rsvp-email').value,
-      user_name:  document.getElementById('rsvp-name').value,
-      user_email: document.getElementById('rsvp-email').value,
-      user_phone: document.getElementById('rsvp-phone').value,
-      language:   l === 'bm' ? 'Bahasa Melayu' : 'English',
-      programme:  txt.title,
+      const modal = document.getElementById('rsvp-modal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
     }
-  ).then(function() {
-    document.getElementById('rsvp-success-title').textContent = txt.successTitle;
-    document.getElementById('rsvp-success-body').textContent  = txt.successBody;
-    document.getElementById('rsvp-success').style.display = 'block';
-    document.getElementById('rsvp-form').style.display    = 'none';
-  }).catch(function(err) {
-    console.error('EmailJS error:', err);
-    alert(l === 'bm'
-      ? 'Maaf, terdapat masalah. Sila cuba lagi atau hubungi kami terus.'
-      : 'Sorry, there was a problem. Please try again or contact us directly.'
-    );
-    btn.disabled = false;
-    btn.style.opacity = '1';
-    document.getElementById('rsvp-submit-label').textContent = txt.btnText;
-  });
-});
-</script>
 
-<script>
-// ═══════════════════════════════════════════════
-// TRANSLATIONS  (EN / BM — formal Sabahan Malay)
-// ═══════════════════════════════════════════════
-const T = {
-  en: {
-    // nav
-    "nav.about":"About Us","nav.coding":"Coding","nav.ai":"AI Classes","nav.contact":"Contact",
-    // about hero
-    "about.badge":"KPM Certified · Sabah's Only",
-    "about.hero.t1":"Bridging ","about.hero.t2":"Human Potential","about.hero.t3":" &amp; the Digital World",
-    "about.hero.sub":"Pusat Kemahiran Innocode is Sabah's premier tech education centre — certified by Malaysia's Ministry of Education and built on a foundation of real-world expertise.",
-    "about.cta1":"Explore Coding","about.cta2":"AI Classes →",
-    "about.card.sub":"Pusat Kemahiran · Kota Kinabalu",
-    "about.s1":"In Sabah","about.s2":"Certified","about.s3":"Programs",
-    // kpm
-    "kpm.title":"Ministry of Education (KPM) Certified",
-    "kpm.body":"Innocode holds the distinction of being the only institution in Sabah awarded this specific certification — a mark of excellence in technical education.",
-    // team section
-    "team.label":"Our People","team.title":"A Visionary Partnership",
-    "team.sub":"Founded by a mother-and-son duo, Innocode blends high-level technical expertise with entrepreneurial heart — united by a shared mission to empower Sabah's community through technology.",
-    // team
-    "bryan.role":"Co-Founder &amp; Technologist","bryan.pos":"Lead of Software Innovation &amp; Education",
-    "bryan.bio":"A 2019 Computer Science graduate from the University of Utah, Bryan brings a global perspective to Sabah's tech scene. As a specialist software engineer and game developer, he has a proven track record of delivering high-quality software solutions for both agile startups and established corporations.<br><br>Bryan's deep understanding of code isn't just about building programs — it's about solving problems. His transition into education stems from a desire to demystify complex technologies, ensuring the next generation of creators has the tools to build the future.",
-    "sallie.role":"Co-Founder &amp; Mentor","sallie.pos":"Director of Business Development &amp; Life Coaching",
-    "sallie.bio":"An alumna of Berkeley International University, Dr. Sallie Tan is a visionary entrepreneur and the founder of Gloria Perfect Aesthetic Sdn Bhd. Through the years, she has cemented her reputation as a successful businesswoman and dedicated life and beauty coach.<br><br>Dr. Sallie is more than just an entrepreneur — she is a connector. Known for her unwavering support of aspiring business owners, she believes that success is best when shared. Her influence ensures that Innocode is a launchpad for professional growth and confidence.",
-    "scholena.role":"AI Programme Lead","scholena.pos":"Facilitator of AI Technology Integration",
-    "scholena.bio":"A Forestry Science graduate from Universiti Malaysia Sabah (UMS) who views the tropical rainforest as the world's most advanced technological system. Scholena is dedicated to bridging the digital gap by bringing AI education to the grassroots level — with no age barriers.<br><br>By blending local wisdom with digital innovation, Scholena focuses on developing ethical and responsible AI users who view technology as a tool for restoration, not destruction.",
-    // purpose
-    "purpose.label":"Our Purpose","purpose.title":"Why We Do What We Do",
-    "purpose.sub":"We aren't just teaching technical skills — we are building a legacy of self-reliance and innovation right here in Sabah.",
-    "vision.title":"Our Vision","vision.body":"Building a legacy of self-reliance and innovation in our homeland of Sabah — where every community member can thrive in the digital age.",
-    "mission.title":"Our Mission","mission.body":"To equip our community with the digital tools they need to thrive in the modern world — through practical, certified, and meaningful education.",
-    "belief.title":"Our Belief","belief.body":"Success is most meaningful when it is shared. At Innocode, we don't just open doors to technology — we open doors to opportunity.",
-    // contact
-    "ct.addr":"📍 Address","ct.email":"✉️ Email","ct.phone":"📞 Phone",
-    // footer
-    "ft.tag":"Bridging human potential with the digital landscape — one student at a time. Sabah's only KPM-certified institution of its kind.",
-    "ft.cert":"★ KPM Certified","ft.nav":"Navigate","ft.prog":"Programmes","ft.contact":"Contact",
-    "ft.softdev":"Software Development","ft.gallery":"Student's Creation Gallery",
-    "ft.ctag":"KPM-certified technical education in the heart of Kota Kinabalu, Sabah.",
-    "ft.atag":"KPM-certified technical education. Empowering Sabah's community with the tools of tomorrow.",
-    // coding
-    "cod.label":"Pengekodan / Coding","cod.title":"Build Real Skills for the Real World",
-    "cod.sub":"Our coding programme is designed for aspiring developers, career changers, and anyone ready to turn logic into living software.",
-    "cod.nt":"📣 Coming Soon — Enrolment Open",
-    "cod.nb":"Whether you're a student looking to learn, or an experienced developer interested in tutoring opportunities — we want to hear from you.",
-    "cod.ol":"What We Offer","cod.ot":"Code That Solves Problems",
-    "cod.os":"Our approach isn't just teaching syntax — it's teaching you to think like an engineer.",
-    "cod.f1t":"Software Development","cod.f1b":"From web apps to desktop software, learn the full stack of modern software engineering with guidance from industry professionals.",
-    "cod.f2t":"Game Development","cod.f2b":"Bring ideas to life in interactive form. Learn game logic, design patterns, and creative problem solving through game dev fundamentals.",
-    "cod.f3t":"Problem-First Thinking","cod.f3b":"Code is a tool, not a destination. We train students to identify, scope, and solve real problems before writing a single line.",
-    "cod.f4t":"Industry-Ready Projects","cod.f4b":"Work on real deliverables. Our projects mirror the standards expected at agile startups and established corporations.",
-    "cod.f5t":"Expert Tutors","cod.f5b":"Learn from Bryan Lee — University of Utah CS graduate with professional experience across startups and corporate clients.",
-    "cod.f6t":"Global Perspective, Local Heart","cod.f6b":"We bring international best practices to Sabah's tech scene — making world-class software education accessible right here at home.",
-    "cod.ct":"Students &amp; Tutors Welcome","cod.cs":"Whether you want to learn or teach, Innocode's coding programme has a place for you.","cod.ce":"Email Us",
-    // ai
-    "ai.label":"Teknologi AI / AI Technology","ai.title":"The Next Great Tool for Community Empowerment",
-    "ai.sub":"Artificial Intelligence isn't just for tech experts — it belongs to everyone. At Innocode, we're bringing AI education to the grassroots level, led by Scholena Kinit Leon.",
-    "ai.pl":"Our AI Programmes","ai.pt":"Two Programmes, One Mission",
-    "ai.ps":"Whether you're a curious child or an experienced leader, our AI programmes are designed to meet you where you are — and take you further.",
-    "srd.tag":"Programme 1 · AI for Community","srd.sub":"Digital Jungle Safari",
-    "srd.l1b":"About the Programme","srd.l1t":" — Nature-inspired AI literacy for all ages, blending Sabah's heritage with digital innovation",
-    "srd.l2b":"No age barriers","srd.l2t":" — from children to community elders",
-    "srd.l3b":"Ethical AI focus","srd.l3t":" — technology as a tool for restoration, not destruction",
-    "srd.l4b":"Rooted in local wisdom","srd.l4t":" — Scholena's forestry background meets the digital frontier",
-    "srd.b1":"Book a Session / Tempah Sesi","srd.b2":"Be Our Sponsor / Jadi Penaja","srd.b3":"Let's Grow Together / Jom Membesar",
-    "tlm.tag":"Programme 2 · AI for Leaders","tlm.sub":"AI for Experienced Leaders",
-    "tlm.l1b":"About the Programme","tlm.l1t":" — AI integration designed for business owners, managers, and experienced professionals",
-    "tlm.l2b":"Stay relevant","tlm.l2t":" — navigate the digital revolution with confidence",
-    "tlm.l3b":"Strategic AI use","tlm.l3t":" — apply AI tools to real business and leadership contexts",
-    "tlm.l4b":"Courses Offered","tlm.l4t":" — enquire with us for the current course catalogue",
-    "tlm.b1":"Enquire About Courses","tlm.b2":"Request Programme Info",
-    "gal.label":"Galeri Ciptaan Pelajar","gal.title":"Student's Creation Gallery",
-    "gal.sub":"Showcasing the work of our AI students — from young naturalists discovering technology for the first time to senior members applying AI in their fields.",
-    "gal.jt":"Junior Naturalist","gal.jb":"Gallery of creations by our youngest AI students — curious minds learning to shape the digital world.",
-    "gal.st":"Senior Naturalist","gal.sb":"Advanced projects from experienced students applying AI to real-world challenges in Sabah and beyond.",
-    "sp.label":"Support Our Mission","sp.title":"Become a Sponsor",
-    "sp.body":"Help us bring AI education to every corner of Sabah's community. Your support directly funds student scholarships, community workshops, and programme development.",
-    "sp.btn":"Get in Touch",
-  },
+    function closeRsvp() {
+      document.getElementById('rsvp-modal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
 
-  bm: {
-    // nav
-    "nav.about":"Tentang Kami","nav.coding":"Pengekodan","nav.ai":"Kelas AI","nav.contact":"Hubungi Kami",
-    // about hero
-    "about.badge":"Bertauliah KPM · Satu-Satunya di Sabah",
-    "about.hero.t1":"Merapatkan ","about.hero.t2":"Potensi Insan","about.hero.t3":" &amp; Dunia Digital",
-    "about.hero.sub":"Pusat Kemahiran Innocode adalah pusat pendidikan teknologi terkemuka di Sabah — diiktiraf oleh Kementerian Pendidikan Malaysia dan dibina atas asas kepakaran sebenar dunia industri.",
-    "about.cta1":"Terokai Pengekodan","about.cta2":"Kelas AI →",
-    "about.card.sub":"Pusat Kemahiran · Kota Kinabalu",
-    "about.s1":"Di Sabah","about.s2":"Bertauliah","about.s3":"Program",
-    // kpm
-    "kpm.title":"Bertauliah Kementerian Pendidikan Malaysia (KPM)",
-    "kpm.body":"Innocode dengan bangganya memegang keistimewaan sebagai satu-satunya institusi di Sabah yang dianugerahkan pensijilan khusus ini — lambang kecemerlangan dalam pendidikan teknikal.",
-    // team section
-    "team.label":"Warga Kami","team.title":"Kerjasama Berwawasan",
-    "team.sub":"Diasaskan oleh gandingan ibu dan anak, Innocode menggabungkan kepakaran teknikal tahap tinggi dengan semangat keusahawanan yang tulus — bersatu dalam misi untuk memperkasakan komuniti Sabah melalui teknologi.",
-    // team
-    "bryan.role":"Pengasas Bersama &amp; Pakar Teknologi","bryan.pos":"Ketua Inovasi Perisian &amp; Pendidikan",
-    "bryan.bio":"Sebagai graduan Sains Komputer dari University of Utah (2019), Bryan membawa perspektif global ke dalam arena teknologi di Sabah. Sebagai jurutera perisian pakar dan pembangun permainan video, beliau mempunyai rekod prestasi yang terbukti dalam menyampaikan penyelesaian perisian berkualiti tinggi untuk syarikat pemula yang lincah mahupun korporat terkemuka.<br><br>Pemahaman mendalam Bryan tentang kod bukan sekadar membina program — ia adalah tentang menyelesaikan masalah. Peralihan beliau ke bidang pendidikan berakar umbi daripada keinginan untuk mempermudah teknologi yang kompleks, bagi memastikan generasi pencipta masa hadapan mempunyai alatan yang tepat untuk membina dunia hari esok.",
-    "sallie.role":"Pengasas Bersama &amp; Mentor","sallie.pos":"Pengarah Pembangunan Perniagaan &amp; Bimbingan Kehidupan",
-    "sallie.bio":"Merupakan alumni Berkeley International University, Dr. Sallie Tan adalah seorang usahawan berwawasan dan pengasas di sebalik Gloria Perfect Aesthetic Sdn Bhd. Sepanjang bertahun-tahun dalam industri, beliau telah mengukuhkan reputasi bukan sekadar sebagai ahli perniagaan yang berjaya, malah sebagai pakar bimbingan kehidupan dan kecantikan yang disegani.<br><br>Bagi Dr. Sallie, perniagaan bukan sekadar tentang keuntungan — beliau adalah seorang penghubung jiwa. Dikenali dengan sokongan padu beliau dalam membimbing usahawan baharu, beliau memegang prinsip bahawa kejayaan yang sebenar adalah kejayaan yang dirasai bersama.",
-    "scholena.role":"Peneraju Program AI","scholena.pos":"Pemudah Cara Integrasi Teknologi AI",
-    "scholena.bio":"Merupakan graduan Sains Perhutanan dari Universiti Malaysia Sabah (UMS) yang melihat alam semulajadi sebagai sistem teknologi tercanggih di dunia. Beliau kini membawa misi untuk merapatkan jurang digital dengan menyebarkan ilmu Kecerdasan Buatan kepada komuniti Sabah tanpa mengira sempadan usia.<br><br>Falsafah kepimpinan beliau menggabungkan kearifan tempatan dengan inovasi digital untuk melahirkan pengguna AI yang beretika dan bertanggungjawab. Beliau mendidik masyarakat agar menggunakan teknologi sebagai alat untuk memulih dan memelihara warisan, bukannya memusnahkan.",
-    // purpose
-    "purpose.label":"Tujuan Kami","purpose.title":"Mengapa Kami Lakukan Ini",
-    "purpose.sub":"Kami bukan sekadar mengajar kemahiran teknikal — kami sedang membina sebuah legasi kemandirian dan inovasi di tanah air kita sendiri, Sabah.",
-    "vision.title":"Visi Kami","vision.body":"Membina sebuah legasi kemandirian dan inovasi di tanah air kita sendiri, Sabah — di mana setiap anggota komuniti mampu berkembang maju dalam era digital.",
-    "mission.title":"Misi Kami","mission.body":"Untuk melengkapkan komuniti kita dengan \"senjata\" digital yang diperlukan demi berkembang maju dalam dunia yang serba moden ini — melalui pendidikan yang praktikal, bertauliah, dan bermakna.",
-    "belief.title":"Kepercayaan Kami","belief.body":"Kejayaan menjadi jauh lebih bermakna apabila ia dikongsi bersama. Di Innocode, kami tidak sekadar membuka pintu kepada teknologi — kami membuka ruang untuk peluang masa depan yang lebih cerah.",
-    // contact
-    "ct.addr":"📍 Alamat","ct.email":"✉️ E-mel","ct.phone":"📞 Telefon",
-    // footer
-    "ft.tag":"Merapatkan potensi insan dengan landskap digital — seorang pelajar pada satu masa. Satu-satunya institusi bertauliah KPM di Sabah.",
-    "ft.cert":"★ Bertauliah KPM","ft.nav":"Navigasi","ft.prog":"Program-Program","ft.contact":"Hubungi Kami",
-    "ft.softdev":"Pembangunan Perisian","ft.gallery":"Galeri Ciptaan Pelajar",
-    "ft.ctag":"Pendidikan teknikal bertauliah KPM di jantung Kota Kinabalu, Sabah.",
-    "ft.atag":"Pendidikan teknikal bertauliah KPM. Memperkasakan komuniti Sabah dengan alatan masa hadapan.",
-    // coding
-    "cod.label":"Pengekodan / Coding","cod.title":"Bina Kemahiran Sebenar untuk Dunia Sebenar",
-    "cod.sub":"Program pengekodan kami direka untuk bakal pembangun, penukaran kerjaya, dan sesiapa sahaja yang bersedia untuk mengubah logik kepada perisian yang hidup.",
-    "cod.nt":"📣 Akan Datang — Pendaftaran Dibuka",
-    "cod.nb":"Sama ada anda seorang pelajar yang ingin belajar, atau pembangun berpengalaman yang berminat dengan peluang mengajar — kami ingin mendengar daripada anda.",
-    "cod.ol":"Apa Yang Kami Tawarkan","cod.ot":"Kod Yang Menyelesaikan Masalah",
-    "cod.os":"Pendekatan kami bukan sekadar mengajar sintaks — kami mengajar anda berfikir seperti seorang jurutera. Setiap pelajaran berasaskan penyelesaian masalah dunia sebenar.",
-    "cod.f1t":"Pembangunan Perisian","cod.f1b":"Daripada aplikasi web hingga perisian desktop, pelajari tindanan penuh kejuruteraan perisian moden dengan bimbingan profesional industri.",
-    "cod.f2t":"Pembangunan Permainan","cod.f2b":"Hidupkan idea dalam bentuk interaktif. Pelajari logik permainan, corak reka bentuk, dan penyelesaian masalah kreatif melalui asas pembangunan permainan.",
-    "cod.f3t":"Pemikiran Utamakan Masalah","cod.f3b":"Kod adalah alat, bukan destinasi. Kami melatih pelajar untuk mengenal pasti, mengskop, dan menyelesaikan masalah sebenar sebelum menulis sebaris kod.",
-    "cod.f4t":"Projek Sedia Industri","cod.f4b":"Bekerja pada hasil kerja sebenar. Projek kami mencerminkan piawaian yang dijangkakan di syarikat pemula lincah dan korporat terkemuka.",
-    "cod.f5t":"Tutor Pakar","cod.f5b":"Belajar dari Bryan Lee — graduan CS University of Utah dengan pengalaman profesional merentasi syarikat pemula dan pelanggan korporat.",
-    "cod.f6t":"Perspektif Global, Hati Tempatan","cod.f6b":"Kami membawa amalan terbaik antarabangsa ke dalam arena teknologi Sabah — menjadikan pendidikan perisian bertaraf dunia mudah diakses di sini.",
-    "cod.ct":"Pelajar &amp; Tutor Dialu-alukan","cod.cs":"Sama ada anda ingin belajar atau mengajar, program pengekodan Innocode mempunyai tempat untuk anda.","cod.ce":"E-mel Kami",
-    // ai
-    "ai.label":"Teknologi Kecerdasan Buatan (AI)","ai.title":"Alat Utama Seterusnya untuk Pemerkasaan Komuniti",
-    "ai.sub":"Kecerdasan Buatan bukan hanya untuk pakar teknologi — ia milik semua orang. Di Innocode, kami membawa pendidikan AI ke peringkat akar umbi, dipimpin oleh Scholena Kinit Leon.",
-    "ai.pl":"Program AI Kami","ai.pt":"Dua Program, Satu Misi",
-    "ai.ps":"Sama ada anda seorang kanak-kanak yang ingin tahu atau pemimpin berpengalaman, program AI kami direka untuk bertemu dengan anda di mana anda berada — dan membawa anda lebih jauh.",
-    "srd.tag":"Program 1 · AI untuk Komuniti","srd.sub":"Safari Hutan Digital",
-    "srd.l1b":"Tentang Program","srd.l1t":" — Literasi AI berinspirasikan alam semulajadi untuk semua peringkat usia, menggabungkan warisan Sabah dengan inovasi digital",
-    "srd.l2b":"Tiada halangan usia","srd.l2t":" — daripada kanak-kanak hingga warga emas komuniti",
-    "srd.l3b":"Fokus AI beretika","srd.l3t":" — teknologi sebagai alat untuk memulih, bukan memusnahkan",
-    "srd.l4b":"Berakar dalam kearifan tempatan","srd.l4t":" — latar belakang perhutanan Scholena bertemu dengan sempadan digital",
-    "srd.b1":"Tempah Sesi Sekarang","srd.b2":"Jadi Penaja Kami","srd.b3":"Jom Membesar Bersama",
-    "tlm.tag":"Program 2 · AI untuk Pemimpin","tlm.sub":"AI untuk Pemimpin Berpengalaman",
-    "tlm.l1b":"Tentang Program","tlm.l1t":" — Integrasi AI yang direka untuk pemilik perniagaan, pengurus, dan profesional berpengalaman",
-    "tlm.l2b":"Kekal relevan","tlm.l2t":" — harungi revolusi digital dengan penuh keyakinan",
-    "tlm.l3b":"Penggunaan AI strategik","tlm.l3t":" — gunakan alatan AI dalam konteks perniagaan dan kepimpinan sebenar",
-    "tlm.l4b":"Kursus Ditawarkan","tlm.l4t":" — hubungi kami untuk katalog kursus terkini",
-    "tlm.b1":"Tanya Tentang Kursus","tlm.b2":"Minta Maklumat Program",
-    "gal.label":"Galeri Ciptaan Pelajar","gal.title":"Galeri Ciptaan Pelajar",
-    "gal.sub":"Mempamerkan hasil kerja pelajar AI kami — daripada naturalis muda yang menemui teknologi buat pertama kalinya hingga ahli senior yang mengaplikasikan AI dalam bidang masing-masing.",
-    "gal.jt":"Naturalis Muda","gal.jb":"Galeri ciptaan pelajar AI termuda kami — minda yang ingin tahu belajar membentuk dunia digital.",
-    "gal.st":"Naturalis Senior","gal.sb":"Projek lanjutan dari pelajar berpengalaman yang mengaplikasikan AI kepada cabaran dunia sebenar di Sabah dan luar negara.",
-    "sp.label":"Sokong Misi Kami","sp.title":"Jadilah Penaja",
-    "sp.body":"Bantu kami membawa pendidikan AI ke setiap pelusuk komuniti Sabah. Sokongan anda membiayai biasiswa pelajar, bengkel komuniti, dan pembangunan program.",
-    "sp.btn":"Hubungi Kami",
-  }
-};
-
-// ─── LANGUAGE ENGINE ───
-let lang = 'en';
-
-function setLang(l) {
-  lang = l;
-  document.getElementById('btn-en').classList.toggle('active', l === 'en');
-  document.getElementById('btn-bm').classList.toggle('active', l === 'bm');
-  document.documentElement.lang = l === 'bm' ? 'ms' : 'en';
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const v = T[l][el.getAttribute('data-i18n')];
-    if (v !== undefined) el.innerHTML = v;
-  });
-}
-
-// ─── NAVIGATION ───
-function showPage(name) {
-  // 1. Update visibility immediately
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-  
-  const targetPage = document.getElementById('page-' + name);
-  const targetNav = document.getElementById('nav-' + name);
-  
-  if (targetPage) targetPage.classList.add('active');
-  if (targetNav) targetNav.classList.add('active');
-
-  // 2. Wait for the browser to "see" the new layout before scrolling
-  setTimeout(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    // 3. Reset animations only after the page is visible
-    document.querySelectorAll('#page-' + name + ' .animate').forEach(el => {
-      el.style.animation = 'none';
-      el.offsetHeight; // Trigger reflow
-      el.style.animation = '';
+    // Close on backdrop click
+    document.getElementById('rsvp-modal').addEventListener('click', function (e) {
+      if (e.target === this) closeRsvp();
     });
-  }, 10); 
-}
 
-function scrollToContact() {
-  setTimeout(() => { const e = document.getElementById('contact'); if(e) e.scrollIntoView({behavior:'smooth'}); }, 100);
-}
+    // Form submission
+    document.getElementById('rsvp-form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const cfg = RSVP_CONFIG[activeProgram];
+      const l = (typeof lang !== 'undefined' ? lang : 'en') === 'bm' ? 'bm' : 'en';
+      const txt = cfg[l];
 
-// ─── MOBILE DRAWER ───
-function toggleDrawer() {
-  const drawer = document.getElementById('mobile-drawer');
-  const burger = document.getElementById('hamburger');
-  const open = drawer.classList.toggle('open');
-  burger.classList.toggle('open', open);
-  document.body.style.overflow = open ? 'hidden' : '';
-}
+      const btn = document.getElementById('rsvp-submit');
+      btn.disabled = true;
+      btn.style.opacity = '0.6';
+      document.getElementById('rsvp-submit-label').textContent = l === 'bm' ? 'Menghantar...' : 'Sending...';
 
-function closeDrawer() {
-  document.getElementById('mobile-drawer').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-  document.body.style.overflow = '';
-}
+      emailjs.send(
+        'service_rt59ybl',
+        cfg.templateId,
+        {
+          to_name: document.getElementById('rsvp-name').value,
+          to_email: document.getElementById('rsvp-email').value,
+          user_name: document.getElementById('rsvp-name').value,
+          user_email: document.getElementById('rsvp-email').value,
+          user_phone: document.getElementById('rsvp-phone').value,
+          language: l === 'bm' ? 'Bahasa Melayu' : 'English',
+          programme: txt.title,
+        }
+      ).then(function () {
+        document.getElementById('rsvp-success-title').textContent = txt.successTitle;
+        document.getElementById('rsvp-success-body').textContent = txt.successBody;
+        document.getElementById('rsvp-success').style.display = 'block';
+        document.getElementById('rsvp-form').style.display = 'none';
+      }).catch(function (err) {
+        console.error('EmailJS error:', err);
+        alert(l === 'bm'
+          ? 'Maaf, terdapat masalah. Sila cuba lagi atau hubungi kami terus.'
+          : 'Sorry, there was a problem. Please try again or contact us directly.'
+        );
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        document.getElementById('rsvp-submit-label').textContent = txt.btnText;
+      });
+    });
+  </script>
 
-function handleDrawerClick(e) {
-  if (e.target === document.getElementById('mobile-drawer')) closeDrawer();
-}
+  <script>
+    // ═══════════════════════════════════════════════
+    // TRANSLATIONS  (EN / BM — formal Sabahan Malay)
+    // ═══════════════════════════════════════════════
+    const T = {
+      en: {
+        // nav
+        "nav.about": "About Us", "nav.coding": "Coding", "nav.ai": "AI Classes", "nav.contact": "Contact",
+        // about hero
+        "about.badge": "KPM Certified · Sabah's Only",
+        "about.hero.t1": "Bridging ", "about.hero.t2": "Human Potential", "about.hero.t3": " &amp; the Digital World",
+        "about.hero.sub": "Pusat Kemahiran Innocode is Sabah's premier tech education centre — certified by Malaysia's Ministry of Education and built on a foundation of real-world expertise.",
+        "about.cta1": "Explore Coding", "about.cta2": "AI Classes →",
+        "about.card.sub": "Pusat Kemahiran · Kota Kinabalu",
+        "about.s1": "In Sabah", "about.s2": "Certified", "about.s3": "Programs",
+        // kpm
+        "kpm.title": "Ministry of Education (KPM) Certified",
+        "kpm.body": "Innocode holds the distinction of being the only institution in Sabah awarded this specific certification — a mark of excellence in technical education.",
+        // team section
+        "team.label": "Our People", "team.title": "A Visionary Partnership",
+        "team.sub": "Founded by a mother-and-son duo, Innocode blends high-level technical expertise with entrepreneurial heart — united by a shared mission to empower Sabah's community through technology.",
+        // team
+        "bryan.role": "Co-Founder &amp; Technologist", "bryan.pos": "Lead of Software Innovation &amp; Education",
+        "bryan.bio": "A 2019 Computer Science graduate from the University of Utah, Bryan brings a global perspective to Sabah's tech scene. As a specialist software engineer and game developer, he has a proven track record of delivering high-quality software solutions for both agile startups and established corporations.<br><br>Bryan's deep understanding of code isn't just about building programs — it's about solving problems. His transition into education stems from a desire to demystify complex technologies, ensuring the next generation of creators has the tools to build the future.",
+        "sallie.role": "Co-Founder &amp; Mentor", "sallie.pos": "Director of Business Development &amp; Life Coaching",
+        "sallie.bio": "An alumna of Berkeley International University, Dr. Sallie Tan is a visionary entrepreneur and the founder of Gloria Perfect Aesthetic Sdn Bhd. Through the years, she has cemented her reputation as a successful businesswoman and dedicated life and beauty coach.<br><br>Dr. Sallie is more than just an entrepreneur — she is a connector. Known for her unwavering support of aspiring business owners, she believes that success is best when shared. Her influence ensures that Innocode is a launchpad for professional growth and confidence.",
+        "scholena.role": "AI Programme Lead", "scholena.pos": "Facilitator of AI Technology Integration",
+        "scholena.bio": "A Forestry Science graduate from Universiti Malaysia Sabah (UMS) who views the tropical rainforest as the world's most advanced technological system. Scholena is dedicated to bridging the digital gap by bringing AI education to the grassroots level — with no age barriers.<br><br>By blending local wisdom with digital innovation, Scholena focuses on developing ethical and responsible AI users who view technology as a tool for restoration, not destruction.",
+        // purpose
+        "purpose.label": "Our Purpose", "purpose.title": "Why We Do What We Do",
+        "purpose.sub": "We aren't just teaching technical skills — we are building a legacy of self-reliance and innovation right here in Sabah.",
+        "vision.title": "Our Vision", "vision.body": "Building a legacy of self-reliance and innovation in our homeland of Sabah — where every community member can thrive in the digital age.",
+        "mission.title": "Our Mission", "mission.body": "To equip our community with the digital tools they need to thrive in the modern world — through practical, certified, and meaningful education.",
+        "belief.title": "Our Belief", "belief.body": "Success is most meaningful when it is shared. At Innocode, we don't just open doors to technology — we open doors to opportunity.",
+        // contact
+        "ct.addr": "📍 Address", "ct.email": "✉️ Email", "ct.phone": "📞 Phone",
+        // footer
+        "ft.tag": "Bridging human potential with the digital landscape — one student at a time. Sabah's only KPM-certified institution of its kind.",
+        "ft.cert": "★ KPM Certified", "ft.nav": "Navigate", "ft.prog": "Programmes", "ft.contact": "Contact",
+        "ft.softdev": "Software Development", "ft.gallery": "Student's Creation Gallery",
+        "ft.ctag": "KPM-certified technical education in the heart of Kota Kinabalu, Sabah.",
+        "ft.atag": "KPM-certified technical education. Empowering Sabah's community with the tools of tomorrow.",
+        // coding
+        "cod.label": "Pengekodan / Coding", "cod.title": "Build Real Skills for the Real World",
+        "cod.sub": "Our coding programme is designed for aspiring developers, career changers, and anyone ready to turn logic into living software.",
+        "cod.nt": "📣 Coming Soon — Enrolment Open",
+        "cod.nb": "Whether you're a student looking to learn, or an experienced developer interested in tutoring opportunities — we want to hear from you.",
+        "cod.ol": "What We Offer", "cod.ot": "Code That Solves Problems",
+        "cod.os": "Our approach isn't just teaching syntax — it's teaching you to think like an engineer.",
+        "cod.f1t": "Software Development", "cod.f1b": "From web apps to desktop software, learn the full stack of modern software engineering with guidance from industry professionals.",
+        "cod.f2t": "Game Development", "cod.f2b": "Bring ideas to life in interactive form. Learn game logic, design patterns, and creative problem solving through game dev fundamentals.",
+        "cod.f3t": "Problem-First Thinking", "cod.f3b": "Code is a tool, not a destination. We train students to identify, scope, and solve real problems before writing a single line.",
+        "cod.f4t": "Industry-Ready Projects", "cod.f4b": "Work on real deliverables. Our projects mirror the standards expected at agile startups and established corporations.",
+        "cod.f5t": "Expert Tutors", "cod.f5b": "Learn from Bryan Lee — University of Utah CS graduate with professional experience across startups and corporate clients.",
+        "cod.f6t": "Global Perspective, Local Heart", "cod.f6b": "We bring international best practices to Sabah's tech scene — making world-class software education accessible right here at home.",
+        "cod.ct": "Students &amp; Tutors Welcome", "cod.cs": "Whether you want to learn or teach, Innocode's coding programme has a place for you.", "cod.ce": "Email Us",
+        // ai
+        "ai.label": "Teknologi AI / AI Technology", "ai.title": "The Next Great Tool for Community Empowerment",
+        "ai.sub": "Artificial Intelligence isn't just for tech experts — it belongs to everyone. At Innocode, we're bringing AI education to the grassroots level, led by Scholena Kinit Leon.",
+        "ai.pl": "Our AI Programmes", "ai.pt": "Two Programmes, One Mission",
+        "ai.ps": "Whether you're a curious child or an experienced leader, our AI programmes are designed to meet you where you are — and take you further.",
+        "srd.tag": "Programme 1 · AI for Community", "srd.sub": "Digital Jungle Safari",
+        "srd.l1b": "About the Programme", "srd.l1t": " — Nature-inspired AI literacy for all ages, blending Sabah's heritage with digital innovation",
+        "srd.l2b": "No age barriers", "srd.l2t": " — from children to community elders",
+        "srd.l3b": "Ethical AI focus", "srd.l3t": " — technology as a tool for restoration, not destruction",
+        "srd.l4b": "Rooted in local wisdom", "srd.l4t": " — Scholena's forestry background meets the digital frontier",
+        "srd.b1": "Book a Session / Tempah Sesi", "srd.b2": "Be Our Sponsor / Jadi Penaja", "srd.b3": "Let's Grow Together / Jom Membesar",
+        "tlm.tag": "Programme 2 · AI for Leaders", "tlm.sub": "AI for Experienced Leaders",
+        "tlm.l1b": "About the Programme", "tlm.l1t": " — AI integration designed for business owners, managers, and experienced professionals",
+        "tlm.l2b": "Stay relevant", "tlm.l2t": " — navigate the digital revolution with confidence",
+        "tlm.l3b": "Strategic AI use", "tlm.l3t": " — apply AI tools to real business and leadership contexts",
+        "tlm.l4b": "Courses Offered", "tlm.l4t": " — enquire with us for the current course catalogue",
+        "tlm.b1": "Enquire About Courses", "tlm.b2": "Request Programme Info",
+        "gal.label": "Galeri Ciptaan Pelajar", "gal.title": "Student's Creation Gallery",
+        "gal.sub": "Showcasing the work of our AI students — from young naturalists discovering technology for the first time to senior members applying AI in their fields.",
+        "gal.jt": "Junior Naturalist", "gal.jb": "Gallery of creations by our youngest AI students — curious minds learning to shape the digital world.",
+        "gal.st": "Senior Naturalist", "gal.sb": "Advanced projects from experienced students applying AI to real-world challenges in Sabah and beyond.",
+        "sp.label": "Support Our Mission", "sp.title": "Become a Sponsor",
+        "sp.body": "Help us bring AI education to every corner of Sabah's community. Your support directly funds student scholarships, community workshops, and programme development.",
+        "sp.btn": "Get in Touch",
+      },
 
-function navTo(page) {
-  closeDrawer();
-  if (page === 'contact') {
-    showPage('about');
-    setTimeout(scrollToContact, 120);
-  } else {
-    showPage(page);
-  }
-}
+      bm: {
+        // nav
+        "nav.about": "Tentang Kami", "nav.coding": "Pengekodan", "nav.ai": "Kelas AI", "nav.contact": "Hubungi Kami",
+        // about hero
+        "about.badge": "Bertauliah KPM · Satu-Satunya di Sabah",
+        "about.hero.t1": "Merapatkan ", "about.hero.t2": "Potensi Insan", "about.hero.t3": " &amp; Dunia Digital",
+        "about.hero.sub": "Pusat Kemahiran Innocode adalah pusat pendidikan teknologi terkemuka di Sabah — diiktiraf oleh Kementerian Pendidikan Malaysia dan dibina atas asas kepakaran sebenar dunia industri.",
+        "about.cta1": "Terokai Pengekodan", "about.cta2": "Kelas AI →",
+        "about.card.sub": "Pusat Kemahiran · Kota Kinabalu",
+        "about.s1": "Di Sabah", "about.s2": "Bertauliah", "about.s3": "Program",
+        // kpm
+        "kpm.title": "Bertauliah Kementerian Pendidikan Malaysia (KPM)",
+        "kpm.body": "Innocode dengan bangganya memegang keistimewaan sebagai satu-satunya institusi di Sabah yang dianugerahkan pensijilan khusus ini — lambang kecemerlangan dalam pendidikan teknikal.",
+        // team section
+        "team.label": "Warga Kami", "team.title": "Kerjasama Berwawasan",
+        "team.sub": "Diasaskan oleh gandingan ibu dan anak, Innocode menggabungkan kepakaran teknikal tahap tinggi dengan semangat keusahawanan yang tulus — bersatu dalam misi untuk memperkasakan komuniti Sabah melalui teknologi.",
+        // team
+        "bryan.role": "Pengasas Bersama &amp; Pakar Teknologi", "bryan.pos": "Ketua Inovasi Perisian &amp; Pendidikan",
+        "bryan.bio": "Sebagai graduan Sains Komputer dari University of Utah (2019), Bryan membawa perspektif global ke dalam arena teknologi di Sabah. Sebagai jurutera perisian pakar dan pembangun permainan video, beliau mempunyai rekod prestasi yang terbukti dalam menyampaikan penyelesaian perisian berkualiti tinggi untuk syarikat pemula yang lincah mahupun korporat terkemuka.<br><br>Pemahaman mendalam Bryan tentang kod bukan sekadar membina program — ia adalah tentang menyelesaikan masalah. Peralihan beliau ke bidang pendidikan berakar umbi daripada keinginan untuk mempermudah teknologi yang kompleks, bagi memastikan generasi pencipta masa hadapan mempunyai alatan yang tepat untuk membina dunia hari esok.",
+        "sallie.role": "Pengasas Bersama &amp; Mentor", "sallie.pos": "Pengarah Pembangunan Perniagaan &amp; Bimbingan Kehidupan",
+        "sallie.bio": "Merupakan alumni Berkeley International University, Dr. Sallie Tan adalah seorang usahawan berwawasan dan pengasas di sebalik Gloria Perfect Aesthetic Sdn Bhd. Sepanjang bertahun-tahun dalam industri, beliau telah mengukuhkan reputasi bukan sekadar sebagai ahli perniagaan yang berjaya, malah sebagai pakar bimbingan kehidupan dan kecantikan yang disegani.<br><br>Bagi Dr. Sallie, perniagaan bukan sekadar tentang keuntungan — beliau adalah seorang penghubung jiwa. Dikenali dengan sokongan padu beliau dalam membimbing usahawan baharu, beliau memegang prinsip bahawa kejayaan yang sebenar adalah kejayaan yang dirasai bersama.",
+        "scholena.role": "Peneraju Program AI", "scholena.pos": "Pemudah Cara Integrasi Teknologi AI",
+        "scholena.bio": "Merupakan graduan Sains Perhutanan dari Universiti Malaysia Sabah (UMS) yang melihat alam semulajadi sebagai sistem teknologi tercanggih di dunia. Beliau kini membawa misi untuk merapatkan jurang digital dengan menyebarkan ilmu Kecerdasan Buatan kepada komuniti Sabah tanpa mengira sempadan usia.<br><br>Falsafah kepimpinan beliau menggabungkan kearifan tempatan dengan inovasi digital untuk melahirkan pengguna AI yang beretika dan bertanggungjawab. Beliau mendidik masyarakat agar menggunakan teknologi sebagai alat untuk memulih dan memelihara warisan, bukannya memusnahkan.",
+        // purpose
+        "purpose.label": "Tujuan Kami", "purpose.title": "Mengapa Kami Lakukan Ini",
+        "purpose.sub": "Kami bukan sekadar mengajar kemahiran teknikal — kami sedang membina sebuah legasi kemandirian dan inovasi di tanah air kita sendiri, Sabah.",
+        "vision.title": "Visi Kami", "vision.body": "Membina sebuah legasi kemandirian dan inovasi di tanah air kita sendiri, Sabah — di mana setiap anggota komuniti mampu berkembang maju dalam era digital.",
+        "mission.title": "Misi Kami", "mission.body": "Untuk melengkapkan komuniti kita dengan \"senjata\" digital yang diperlukan demi berkembang maju dalam dunia yang serba moden ini — melalui pendidikan yang praktikal, bertauliah, dan bermakna.",
+        "belief.title": "Kepercayaan Kami", "belief.body": "Kejayaan menjadi jauh lebih bermakna apabila ia dikongsi bersama. Di Innocode, kami tidak sekadar membuka pintu kepada teknologi — kami membuka ruang untuk peluang masa depan yang lebih cerah.",
+        // contact
+        "ct.addr": "📍 Alamat", "ct.email": "✉️ E-mel", "ct.phone": "📞 Telefon",
+        // footer
+        "ft.tag": "Merapatkan potensi insan dengan landskap digital — seorang pelajar pada satu masa. Satu-satunya institusi bertauliah KPM di Sabah.",
+        "ft.cert": "★ Bertauliah KPM", "ft.nav": "Navigasi", "ft.prog": "Program-Program", "ft.contact": "Hubungi Kami",
+        "ft.softdev": "Pembangunan Perisian", "ft.gallery": "Galeri Ciptaan Pelajar",
+        "ft.ctag": "Pendidikan teknikal bertauliah KPM di jantung Kota Kinabalu, Sabah.",
+        "ft.atag": "Pendidikan teknikal bertauliah KPM. Memperkasakan komuniti Sabah dengan alatan masa hadapan.",
+        // coding
+        "cod.label": "Pengekodan / Coding", "cod.title": "Bina Kemahiran Sebenar untuk Dunia Sebenar",
+        "cod.sub": "Program pengekodan kami direka untuk bakal pembangun, penukaran kerjaya, dan sesiapa sahaja yang bersedia untuk mengubah logik kepada perisian yang hidup.",
+        "cod.nt": "📣 Akan Datang — Pendaftaran Dibuka",
+        "cod.nb": "Sama ada anda seorang pelajar yang ingin belajar, atau pembangun berpengalaman yang berminat dengan peluang mengajar — kami ingin mendengar daripada anda.",
+        "cod.ol": "Apa Yang Kami Tawarkan", "cod.ot": "Kod Yang Menyelesaikan Masalah",
+        "cod.os": "Pendekatan kami bukan sekadar mengajar sintaks — kami mengajar anda berfikir seperti seorang jurutera. Setiap pelajaran berasaskan penyelesaian masalah dunia sebenar.",
+        "cod.f1t": "Pembangunan Perisian", "cod.f1b": "Daripada aplikasi web hingga perisian desktop, pelajari tindanan penuh kejuruteraan perisian moden dengan bimbingan profesional industri.",
+        "cod.f2t": "Pembangunan Permainan", "cod.f2b": "Hidupkan idea dalam bentuk interaktif. Pelajari logik permainan, corak reka bentuk, dan penyelesaian masalah kreatif melalui asas pembangunan permainan.",
+        "cod.f3t": "Pemikiran Utamakan Masalah", "cod.f3b": "Kod adalah alat, bukan destinasi. Kami melatih pelajar untuk mengenal pasti, mengskop, dan menyelesaikan masalah sebenar sebelum menulis sebaris kod.",
+        "cod.f4t": "Projek Sedia Industri", "cod.f4b": "Bekerja pada hasil kerja sebenar. Projek kami mencerminkan piawaian yang dijangkakan di syarikat pemula lincah dan korporat terkemuka.",
+        "cod.f5t": "Tutor Pakar", "cod.f5b": "Belajar dari Bryan Lee — graduan CS University of Utah dengan pengalaman profesional merentasi syarikat pemula dan pelanggan korporat.",
+        "cod.f6t": "Perspektif Global, Hati Tempatan", "cod.f6b": "Kami membawa amalan terbaik antarabangsa ke dalam arena teknologi Sabah — menjadikan pendidikan perisian bertaraf dunia mudah diakses di sini.",
+        "cod.ct": "Pelajar &amp; Tutor Dialu-alukan", "cod.cs": "Sama ada anda ingin belajar atau mengajar, program pengekodan Innocode mempunyai tempat untuk anda.", "cod.ce": "E-mel Kami",
+        // ai
+        "ai.label": "Teknologi Kecerdasan Buatan (AI)", "ai.title": "Alat Utama Seterusnya untuk Pemerkasaan Komuniti",
+        "ai.sub": "Kecerdasan Buatan bukan hanya untuk pakar teknologi — ia milik semua orang. Di Innocode, kami membawa pendidikan AI ke peringkat akar umbi, dipimpin oleh Scholena Kinit Leon.",
+        "ai.pl": "Program AI Kami", "ai.pt": "Dua Program, Satu Misi",
+        "ai.ps": "Sama ada anda seorang kanak-kanak yang ingin tahu atau pemimpin berpengalaman, program AI kami direka untuk bertemu dengan anda di mana anda berada — dan membawa anda lebih jauh.",
+        "srd.tag": "Program 1 · AI untuk Komuniti", "srd.sub": "Safari Hutan Digital",
+        "srd.l1b": "Tentang Program", "srd.l1t": " — Literasi AI berinspirasikan alam semulajadi untuk semua peringkat usia, menggabungkan warisan Sabah dengan inovasi digital",
+        "srd.l2b": "Tiada halangan usia", "srd.l2t": " — daripada kanak-kanak hingga warga emas komuniti",
+        "srd.l3b": "Fokus AI beretika", "srd.l3t": " — teknologi sebagai alat untuk memulih, bukan memusnahkan",
+        "srd.l4b": "Berakar dalam kearifan tempatan", "srd.l4t": " — latar belakang perhutanan Scholena bertemu dengan sempadan digital",
+        "srd.b1": "Tempah Sesi Sekarang", "srd.b2": "Jadi Penaja Kami", "srd.b3": "Jom Membesar Bersama",
+        "tlm.tag": "Program 2 · AI untuk Pemimpin", "tlm.sub": "AI untuk Pemimpin Berpengalaman",
+        "tlm.l1b": "Tentang Program", "tlm.l1t": " — Integrasi AI yang direka untuk pemilik perniagaan, pengurus, dan profesional berpengalaman",
+        "tlm.l2b": "Kekal relevan", "tlm.l2t": " — harungi revolusi digital dengan penuh keyakinan",
+        "tlm.l3b": "Penggunaan AI strategik", "tlm.l3t": " — gunakan alatan AI dalam konteks perniagaan dan kepimpinan sebenar",
+        "tlm.l4b": "Kursus Ditawarkan", "tlm.l4t": " — hubungi kami untuk katalog kursus terkini",
+        "tlm.b1": "Tanya Tentang Kursus", "tlm.b2": "Minta Maklumat Program",
+        "gal.label": "Galeri Ciptaan Pelajar", "gal.title": "Galeri Ciptaan Pelajar",
+        "gal.sub": "Mempamerkan hasil kerja pelajar AI kami — daripada naturalis muda yang menemui teknologi buat pertama kalinya hingga ahli senior yang mengaplikasikan AI dalam bidang masing-masing.",
+        "gal.jt": "Naturalis Muda", "gal.jb": "Galeri ciptaan pelajar AI termuda kami — minda yang ingin tahu belajar membentuk dunia digital.",
+        "gal.st": "Naturalis Senior", "gal.sb": "Projek lanjutan dari pelajar berpengalaman yang mengaplikasikan AI kepada cabaran dunia sebenar di Sabah dan luar negara.",
+        "sp.label": "Sokong Misi Kami", "sp.title": "Jadilah Penaja",
+        "sp.body": "Bantu kami membawa pendidikan AI ke setiap pelusuk komuniti Sabah. Sokongan anda membiayai biasiswa pelajar, bengkel komuniti, dan pembangunan program.",
+        "sp.btn": "Hubungi Kami",
+      }
+    };
 
-document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
-</script>
+    // ─── LANGUAGE ENGINE ───
+    let lang = 'en';
+
+    function setLang(l) {
+      lang = l;
+      document.getElementById('btn-en').classList.toggle('active', l === 'en');
+      document.getElementById('btn-bm').classList.toggle('active', l === 'bm');
+      document.documentElement.lang = l === 'bm' ? 'ms' : 'en';
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = T[l][el.getAttribute('data-i18n')];
+        if (v !== undefined) el.innerHTML = v;
+      });
+    }
+
+    // ─── NAVIGATION ───
+    function showPage(name) {
+      // 1. Update visibility immediately
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+      const targetPage = document.getElementById('page-' + name);
+      const targetNav = document.getElementById('nav-' + name);
+
+      if (targetPage) targetPage.classList.add('active');
+      if (targetNav) targetNav.classList.add('active');
+
+      // 2. Wait for the browser to "see" the new layout before scrolling
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // 3. Reset animations only after the page is visible
+        document.querySelectorAll('#page-' + name + ' .animate').forEach(el => {
+          el.style.animation = 'none';
+          el.offsetHeight; // Trigger reflow
+          el.style.animation = '';
+        });
+      }, 10);
+    }
+
+    function scrollToContact() {
+      setTimeout(() => { const e = document.getElementById('contact'); if (e) e.scrollIntoView({ behavior: 'smooth' }); }, 100);
+    }
+
+    // ─── MOBILE DRAWER ───
+    function toggleDrawer() {
+      const drawer = document.getElementById('mobile-drawer');
+      const burger = document.getElementById('hamburger');
+      const open = drawer.classList.toggle('open');
+      burger.classList.toggle('open', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+
+    function closeDrawer() {
+      document.getElementById('mobile-drawer').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function handleDrawerClick(e) {
+      if (e.target === document.getElementById('mobile-drawer')) closeDrawer();
+    }
+
+    function navTo(page) {
+      closeDrawer();
+      if (page === 'contact') {
+        showPage('about');
+        setTimeout(scrollToContact, 120);
+      } else {
+        showPage(page);
+      }
+    }
+
+    document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+  </script>
 </body>
+
 </html>
