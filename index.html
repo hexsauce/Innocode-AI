@@ -264,7 +264,85 @@
     .sponsor-section, .gallery-section { padding: 60px 24px; }
     .nav-links { display: none; }
     .lang-toggle { margin-left: 0; }
+.hero {
+  min-height: unset;
+}
+.hero-left {
+  padding: 40px 24px 60px;
+  justify-content: flex-start;
+}
+h1.hero-title {
+  font-size: clamp(30px, 8vw, 42px);
+}
   }
+
+/* ─── MOBILE NAV DRAWER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: 8px;
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: all 0.25s;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  top: 72px; left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  background: rgba(13,17,23,0.5);
+  backdrop-filter: blur(4px);
+}
+.mobile-drawer.open { display: block; }
+
+.mobile-drawer-panel {
+  background: var(--cream);
+  border-bottom: 1px solid var(--border);
+  padding: 16px 20px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.mobile-drawer-panel a {
+  display: block;
+  font-family: 'Syne', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 14px 16px;
+  border-radius: 8px;
+  transition: background 0.15s;
+  cursor: pointer;
+}
+.mobile-drawer-panel a:hover,
+.mobile-drawer-panel a.active { background: rgba(0,0,0,0.06); }
+.mobile-drawer-panel .mobile-cta {
+  background: var(--ink);
+  color: var(--gold-light) !important;
+  margin-top: 8px;
+  text-align: center;
+}
+.mobile-drawer-panel .mobile-cta:hover { background: var(--steel); }
+
+@media (max-width: 900px) {
+  .hamburger { display: flex; }
+}
 </style>
 </head>
 <body>
@@ -289,8 +367,21 @@
       <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
       <button class="lang-btn" id="btn-bm" onclick="setLang('bm')">BM</button>
     </div>
+<button class="hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
   </div>
 </nav>
+
+<!-- ─── MOBILE DRAWER ─── -->
+<div id="mobile-drawer" class="mobile-drawer" onclick="handleDrawerClick(event)">
+  <div class="mobile-drawer-panel">
+    <a onclick="navTo('about')" id="mob-about" data-i18n="nav.about">About Us</a>
+    <a onclick="navTo('coding')" id="mob-coding" data-i18n="nav.coding">Coding</a>
+    <a onclick="navTo('ai')" id="mob-ai" data-i18n="nav.ai">AI Classes</a>
+    <a onclick="navTo('contact')" class="mobile-cta" data-i18n="nav.contact">Contact</a>
+  </div>
+</div>
 
 <!-- ═══════════════════ ABOUT ═══════════════════ -->
 <div id="page-about" class="page active">
@@ -895,6 +986,35 @@ function showPage(name) {
 
 function scrollToContact() {
   setTimeout(() => { const e = document.getElementById('contact'); if(e) e.scrollIntoView({behavior:'smooth'}); }, 100);
+}
+
+// ─── MOBILE DRAWER ───
+function toggleDrawer() {
+  const drawer = document.getElementById('mobile-drawer');
+  const burger = document.getElementById('hamburger');
+  const open = drawer.classList.toggle('open');
+  burger.classList.toggle('open', open);
+  document.body.style.overflow = open ? 'hidden' : '';
+}
+
+function closeDrawer() {
+  document.getElementById('mobile-drawer').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function handleDrawerClick(e) {
+  if (e.target === document.getElementById('mobile-drawer')) closeDrawer();
+}
+
+function navTo(page) {
+  closeDrawer();
+  if (page === 'contact') {
+    showPage('about');
+    setTimeout(scrollToContact, 120);
+  } else {
+    showPage(page);
+  }
 }
 
 document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', e => e.preventDefault()));
